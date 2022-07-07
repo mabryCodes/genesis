@@ -1,0 +1,93 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "outline-alert",
+      "path": "./components/outline-alert/outline-alert.ts",
+      "description": "The Outline Alert component",
+      "attributes": [
+        {
+          "name": "statusType",
+          "type": "\"info\" | \"warning\" | \"error\" | \"success\"",
+          "default": "\"info\""
+        },
+        {
+          "name": "size",
+          "type": "\"small\" | \"large\"",
+          "default": "\"large\""
+        },
+        {
+          "name": "isInteractive",
+          "description": "This is important context for screen readers.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shouldShowIcon",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "properties": [
+        {
+          "name": "statusType",
+          "attribute": "statusType",
+          "type": "\"info\" | \"warning\" | \"error\" | \"success\"",
+          "default": "\"info\""
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "type": "\"small\" | \"large\"",
+          "default": "\"large\""
+        },
+        {
+          "name": "isInteractive",
+          "attribute": "isInteractive",
+          "description": "This is important context for screen readers.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shouldShowIcon",
+          "attribute": "shouldShowIcon",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "styles",
+          "type": "CSSResultGroup",
+          "default": "[\"componentVars\",\"componentStyles\"]"
+        }
+      ],
+      "slots": [
+        {
+          "name": "default",
+          "description": "The alert contents."
+        },
+        {
+          "name": "header",
+          "description": "The header in the alert."
+        }
+      ],
+      "cssProperties": [
+        {
+          "name": "--outline-alert-info",
+          "description": "background: The background color for the info alert."
+        },
+        {
+          "name": "--outline-alert-success",
+          "description": "background: The background color for the success alert."
+        },
+        {
+          "name": "--outline-alert-warning",
+          "description": "background: The background color for the warning alert."
+        },
+        {
+          "name": "--outline-alert-error",
+          "description": "background: The background color for the error alert."
+        }
+      ]
+    }
+  ]
+}
