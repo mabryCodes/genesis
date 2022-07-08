@@ -60,7 +60,9 @@
     "posttest": "yarn lint",
     "prepack": "yarn build && oclif manifest && oclif readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif readme && git add README.md"
+    "version": "oclif readme && git add README.md",
+    "generate:story": "./bin/run generate:story",
+    "generate:story:test": "./bin/run generate:story outline-alert -o test/mock-app/src/components/outline-alert/test.stories.ts"
   },
   "engines": {
     "node": ">=12.0.0"
