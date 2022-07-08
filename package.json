@@ -1,7 +1,7 @@
 {
   "name": "ds-gen",
   "version": "0.0.0",
-  "description": "CLI tools for the Outline Design System",
+  "description": "A CLI tool for generating Lit Element components, Storybook stories, and more!",
   "author": "Josh Mabry",
   "bin": {
     "ds-gen": "./bin/run"
