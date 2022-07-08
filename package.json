@@ -4,12 +4,12 @@
   "description": "A CLI tool for generating Lit Element components, Storybook stories, and more!",
   "author": "Josh Mabry",
   "bin": {
-    "dsgn-gnrtr": "./bin/run"
+    "genesis": "./bin/run"
   },
-  "homepage": "https://github.com/mabryCodes/genesis-design",
+  "homepage": "https://github.com/mabryCodes/genesis",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "mabry1985/dsgn-gnrtr",
+  "repository": "mabry1985/genesis",
   "files": [
     "/bin",
     "/dist",
@@ -39,19 +39,15 @@
     "typescript": "^4.4.3"
   },
   "oclif": {
-    "bin": "dsgn-gnrtr",
-    "dirname": "dsgn-gnrtr",
+    "bin": "genesis",
+    "dirname": "genesis",
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-plugins"
     ],
     "topicSeparator": " ",
-    "topics": {
-      "hello": {
-        "description": "Say hello to the world and others"
-      }
-    }
+    "topics": {}
   },
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
@@ -67,7 +63,7 @@
   "engines": {
     "node": ">=12.0.0"
   },
-  "bugs": "https://github.com/mabryCodes/genesis-design/issues",
+  "bugs": "https://github.com/mabrycodes/genesis/issues",
   "keywords": [
     "oclif"
   ],
