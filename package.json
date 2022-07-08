@@ -1,15 +1,15 @@
 {
-  "name": "outline-cli",
+  "name": "ds-gen",
   "version": "0.0.0",
   "description": "CLI tools for the Outline Design System",
   "author": "Josh Mabry",
   "bin": {
-    "outline": "./bin/run"
+    "ds-gen": "./bin/run"
   },
-  "homepage": "https://github.com/mabry1985/outline-cli",
+  "homepage": "https://github.com/mabry1985/ds-gen",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "mabry1985/outline-cli",
+  "repository": "mabry1985/ds-gen",
   "files": [
     "/bin",
     "/dist",
@@ -67,7 +67,7 @@
   "engines": {
     "node": ">=12.0.0"
   },
-  "bugs": "https://github.com/mabry1985/outline-cli/issues",
+  "bugs": "https://github.com/mabry1985/ds-gen/issues",
   "keywords": [
     "oclif"
   ],
