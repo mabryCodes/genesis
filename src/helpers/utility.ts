@@ -21,7 +21,7 @@ export const kebabCaseToTitleCase = (str: string): string => {
 }
 
 /**
- * Converts string from kebab-case to lower camel case
+ * Converts string from kebab-case to camelCase
  * example 'outline-button' => 'outlineButton'
  */
 export const kebabCaseToLowerCamelCase = (str: string): string => {
@@ -34,4 +34,18 @@ export const kebabCaseToLowerCamelCase = (str: string): string => {
     return el.charAt(0).toUpperCase() + el.slice(1)
   })
   return formattedArr.join('')
+}
+
+/**
+ * Converts string from camelCase to kebab-case
+ * example 'outline-button' => 'outlineButton'
+ * @param str
+ * @returns string
+ */
+export const camelCaseToKebabCase = (str: string): string => {
+  if (str !== str.toLowerCase()) {
+    str = str.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+  }
+
+  return str
 }

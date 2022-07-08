@@ -8,7 +8,7 @@ const configuration = {
   argTypes: { 
     statusType: {
       control: `string`,
-      name: `statusType`,
+      name: `status-type`,
       description: `undefined`,
       table: { 
         category: 'Properties', 
@@ -30,7 +30,7 @@ const configuration = {
     },
     isInteractive: {
       control: `boolean`,
-      name: `isInteractive`,
+      name: `is-interactive`,
       description: `This is important context for screen readers.`,
       table: { 
         category: 'Properties', 
@@ -41,7 +41,7 @@ const configuration = {
     },
     shouldShowIcon: {
       control: `boolean`,
-      name: `shouldShowIcon`,
+      name: `should-show-icon`,
       description: `undefined`,
       table: { 
         category: 'Properties', 
@@ -57,7 +57,6 @@ const configuration = {
     isInteractive: false,
     shouldShowIcon: true,
   },
-  
   parameters: {
       source: {
         code: `

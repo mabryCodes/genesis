@@ -2,47 +2,12 @@
 // eslint-disable-next-line unicorn/prefer-node-protocol
 import * as fs from 'fs'
 import path = require('path');
-import {
-  kebabCaseToTitleCase,
-  kebabCaseToTitleSpaceCase,
-} from '../../utility'
-import {propertiesTemplate, templateRenderTemplate} from './args-type-template'
+import {storybookTemplate} from './templates'
 
 const config = {
   // customElementPath: 'src/custom-element.json',
   customElementPath: 'test/mock-app/src/custom-element.json',
   // defaultNamespace: 'outline',
-}
-
-const storybookTemplate = (
-  componentName: string,
-  componentData: { attributes: any; slots: any; cssVars: any },
-  category: string,
-) => {
-  return `import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { html, TemplateResult } from 'lit';
-import './${componentName}';
-
-const configuration = {
-  title: \`${category}/${kebabCaseToTitleSpaceCase(componentName)}\`,
-  component: '${componentName}', ${propertiesTemplate(componentData.attributes)}
-  parameters: {
-      source: {
-        code: \`
-<${componentName}>
-  // Add your rendered code here for documentation purposes.
-</${componentName}>
-        \`,
-      },
-    },
-  };
-
-export default configuration;
-
-${templateRenderTemplate(componentData.attributes, componentName)}
-
-export const ${kebabCaseToTitleCase(componentName)} = Template.bind({});
-`
 }
 
 /**
@@ -79,7 +44,7 @@ export const createStory = (
         output ? path.resolve(currDir, output)          :
           path.resolve(currDir, `src/components/${nameSpaceFolder}/${component}/generated-${component}.stories.ts`)
 
-    console.log('Creating story for', componentPath, path)
+    console.log('Creating story for', componentPath)
 
     fs.writeFile(
       componentPath,

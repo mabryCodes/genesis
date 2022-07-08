@@ -1,4 +1,4 @@
-import {kebabCaseToLowerCamelCase} from '../../utility'
+import {camelCaseToKebabCase, kebabCaseToLowerCamelCase} from '../../../utility'
 
 const argTemplate = (arg: { name: string; default: any }): string => {
   return `
@@ -14,7 +14,7 @@ const argsTypeTemplate = (arg: {
   return `
     ${kebabCaseToLowerCamelCase(arg.name)}: {
       control: \`${parseControlType(arg.name, arg.type)}\`,
-      name: \`${arg.name}\`,
+      name: \`${camelCaseToKebabCase(arg.name)}\`,
       description: \`${arg.description}\`,
       table: { 
         category: 'Properties', 
