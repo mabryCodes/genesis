@@ -37,7 +37,7 @@ export const propertiesTemplate = (args: any[]) => {
 }
 
 export const templateRenderTemplate = (attr: any, componentName: string) => {
-  return attr && attr > 0 ?
+  return attr && attr.length > 0 ?
     `const Template = (args = configuration.args): TemplateResult => {
   args = {
     ...configuration.args,
