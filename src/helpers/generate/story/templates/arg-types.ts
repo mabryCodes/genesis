@@ -25,7 +25,7 @@ const argsTypeTemplate = (arg: {
     },`
 }
 
-export const propertiesTemplate = (args: any[]) => {
+export const propertiesTemplate = (args: any[]): string => {
   if (!args) return ''
 
   return `
@@ -36,7 +36,7 @@ export const propertiesTemplate = (args: any[]) => {
   `
 }
 
-export const templateRenderTemplate = (attr: any, componentName: string) => {
+export const templateRenderTemplate = (attr: any, componentName: string): string => {
   return attr && attr.length > 0 ?
     `const Template = (args = configuration.args): TemplateResult => {
   args = {
@@ -56,9 +56,19 @@ export const templateRenderTemplate = (attr: any, componentName: string) => {
 }`
 }
 
-export const attrTemplate = (attr: { name: string }) => {
+export const attrTemplate = (attr: any): string => {
+  let attribute = camelCaseToKebabCase(attr.name)
+
+  switch (attr.type) {
+  case 'boolean':
+    attribute = `?${attr.name}`
+    break
+  default:
+    break
+  }
+
   return `
-      ${attr.name}=\${args.${kebabCaseToLowerCamelCase(attr.name)}}`
+      ${attribute}=\${args.${kebabCaseToLowerCamelCase(attr.name)}}`
 }
 
 /**

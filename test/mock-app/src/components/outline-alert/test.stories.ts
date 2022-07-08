@@ -70,9 +70,19 @@ const configuration = {
 
 export default configuration;
 
-const Template = (): TemplateResult => {
+const Template = (args = configuration.args): TemplateResult => {
+  args = {
+    ...configuration.args,
+    ...args,
+  };
   return html`
-    <outline-alert></outline-alert>
+    <outline-alert 
+      status-type=${args.statusType}
+      size=${args.size}
+      ?isInteractive=${args.isInteractive}
+      ?shouldShowIcon=${args.shouldShowIcon}
+    >
+    </outline-alert>
   `;
 }
 

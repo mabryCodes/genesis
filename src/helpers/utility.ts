@@ -44,7 +44,7 @@ export const kebabCaseToLowerCamelCase = (str: string): string => {
  */
 export const camelCaseToKebabCase = (str: string): string => {
   if (str !== str.toLowerCase()) {
-    str = str.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+    str = str.replace(/[A-Z]/g, m => '-' + m.toLowerCase())
   }
 
   return str
