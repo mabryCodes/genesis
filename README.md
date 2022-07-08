@@ -16,11 +16,11 @@ oclif example Hello World CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g outline-cli
+$ npm install -g ds-gen
 $ outline COMMAND
 running command...
 $ outline (--version)
-outline-cli/0.0.0 darwin-x64 node-v14.16.0
+ds-gen/0.0.0 darwin-x64 node-v14.16.0
 $ outline --help [COMMAND]
 USAGE
   $ outline COMMAND
@@ -29,6 +29,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`outline generate story NAME`](#outline-generate-story-name)
 * [`outline hello PERSON`](#outline-hello-person)
 * [`outline hello world`](#outline-hello-world)
 * [`outline help [COMMAND]`](#outline-help-command)
@@ -41,6 +42,30 @@ USAGE
 * [`outline plugins:uninstall PLUGIN...`](#outline-pluginsuninstall-plugin-1)
 * [`outline plugins:uninstall PLUGIN...`](#outline-pluginsuninstall-plugin-2)
 * [`outline plugins update`](#outline-plugins-update)
+
+## `outline generate story NAME`
+
+Generates a Storybook story using the custom-elements.json file.
+
+```
+USAGE
+  $ outline generate story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>]
+
+ARGUMENTS
+  NAME  name of component
+
+FLAGS
+  -c, --category=<value>  [default: Content] category for the story
+  -f, --fullBleed         removes padding in story canvas, useful for testing full bleed components
+  -o, --output=<value>    category for the story, defaults to the same path as the component
+  -p, --path=<value>      path to custom-elements.json. Defaults to '../src/custom-elements.json'
+
+DESCRIPTION
+  Generates a Storybook story using the custom-elements.json file.
+
+EXAMPLES
+  $ outline generate story
+```
 
 ## `outline hello PERSON`
 
@@ -64,7 +89,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/mabry1985/outline-cli/blob/v0.0.0/dist/commands/hello/index.ts)_
+_See code: [dist/commands/hello/index.ts](https://github.com/mabry1985/ds-gen/blob/v0.0.0/dist/commands/hello/index.ts)_
 
 ## `outline hello world`
 
