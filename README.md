@@ -1,7 +1,9 @@
-oclif-hello-world
+Genesis CLI
 =================
 
-oclif example Hello World CLI
+A CLI tool for generating Lit Element components, Storybook stories, and more!
+
+@TODO - Readme 
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
@@ -16,40 +18,38 @@ oclif example Hello World CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g ds-gen
-$ outline COMMAND
+$ npm install -g @mabry/genesis
+$ dsgn-gnrtr COMMAND
 running command...
-$ outline (--version)
-ds-gen/0.0.0 darwin-x64 node-v14.16.0
-$ outline --help [COMMAND]
+$ dsgn-gnrtr (--version)
+@mabry/genesis/0.0.0 darwin-x64 node-v14.16.0
+$ dsgn-gnrtr --help [COMMAND]
 USAGE
-  $ outline COMMAND
+  $ dsgn-gnrtr COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`outline generate story NAME`](#outline-generate-story-name)
-* [`outline hello PERSON`](#outline-hello-person)
-* [`outline hello world`](#outline-hello-world)
-* [`outline help [COMMAND]`](#outline-help-command)
-* [`outline plugins`](#outline-plugins)
-* [`outline plugins:install PLUGIN...`](#outline-pluginsinstall-plugin)
-* [`outline plugins:inspect PLUGIN...`](#outline-pluginsinspect-plugin)
-* [`outline plugins:install PLUGIN...`](#outline-pluginsinstall-plugin-1)
-* [`outline plugins:link PLUGIN`](#outline-pluginslink-plugin)
-* [`outline plugins:uninstall PLUGIN...`](#outline-pluginsuninstall-plugin)
-* [`outline plugins:uninstall PLUGIN...`](#outline-pluginsuninstall-plugin-1)
-* [`outline plugins:uninstall PLUGIN...`](#outline-pluginsuninstall-plugin-2)
-* [`outline plugins update`](#outline-plugins-update)
+* [`dsgn-gnrtr generate story NAME`](#dsgn-gnrtr-generate-story-name)
+* [`dsgn-gnrtr help [COMMAND]`](#dsgn-gnrtr-help-command)
+* [`dsgn-gnrtr plugins`](#dsgn-gnrtr-plugins)
+* [`dsgn-gnrtr plugins:install PLUGIN...`](#dsgn-gnrtr-pluginsinstall-plugin)
+* [`dsgn-gnrtr plugins:inspect PLUGIN...`](#dsgn-gnrtr-pluginsinspect-plugin)
+* [`dsgn-gnrtr plugins:install PLUGIN...`](#dsgn-gnrtr-pluginsinstall-plugin-1)
+* [`dsgn-gnrtr plugins:link PLUGIN`](#dsgn-gnrtr-pluginslink-plugin)
+* [`dsgn-gnrtr plugins:uninstall PLUGIN...`](#dsgn-gnrtr-pluginsuninstall-plugin)
+* [`dsgn-gnrtr plugins:uninstall PLUGIN...`](#dsgn-gnrtr-pluginsuninstall-plugin-1)
+* [`dsgn-gnrtr plugins:uninstall PLUGIN...`](#dsgn-gnrtr-pluginsuninstall-plugin-2)
+* [`dsgn-gnrtr plugins update`](#dsgn-gnrtr-plugins-update)
 
-## `outline generate story NAME`
+## `dsgn-gnrtr generate story NAME`
 
 Generates a Storybook story using the custom-elements.json file.
 
 ```
 USAGE
-  $ outline generate story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>]
+  $ dsgn-gnrtr generate story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>]
 
 ARGUMENTS
   NAME  name of component
@@ -64,56 +64,16 @@ DESCRIPTION
   Generates a Storybook story using the custom-elements.json file.
 
 EXAMPLES
-  $ outline generate story
+  $ dsgn-gnrtr generate story
 ```
 
-## `outline hello PERSON`
+## `dsgn-gnrtr help [COMMAND]`
 
-Say hello
-
-```
-USAGE
-  $ outline hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/mabry1985/ds-gen/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `outline hello world`
-
-Say hello world
+Display help for dsgn-gnrtr.
 
 ```
 USAGE
-  $ outline hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
-```
-
-## `outline help [COMMAND]`
-
-Display help for outline.
-
-```
-USAGE
-  $ outline help [COMMAND] [-n]
+  $ dsgn-gnrtr help [COMMAND] [-n]
 
 ARGUMENTS
   COMMAND  Command to show help for.
@@ -122,18 +82,18 @@ FLAGS
   -n, --nested-commands  Include all nested commands in the output.
 
 DESCRIPTION
-  Display help for outline.
+  Display help for dsgn-gnrtr.
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
 
-## `outline plugins`
+## `dsgn-gnrtr plugins`
 
 List installed plugins.
 
 ```
 USAGE
-  $ outline plugins [--core]
+  $ dsgn-gnrtr plugins [--core]
 
 FLAGS
   --core  Show core plugins.
@@ -142,18 +102,18 @@ DESCRIPTION
   List installed plugins.
 
 EXAMPLES
-  $ outline plugins
+  $ dsgn-gnrtr plugins
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.0.11/src/commands/plugins/index.ts)_
 
-## `outline plugins:install PLUGIN...`
+## `dsgn-gnrtr plugins:install PLUGIN...`
 
 Installs a plugin into the CLI.
 
 ```
 USAGE
-  $ outline plugins:install PLUGIN...
+  $ dsgn-gnrtr plugins:install PLUGIN...
 
 ARGUMENTS
   PLUGIN  Plugin to install.
@@ -175,23 +135,23 @@ DESCRIPTION
   the CLI without the need to patch and update the whole CLI.
 
 ALIASES
-  $ outline plugins add
+  $ dsgn-gnrtr plugins add
 
 EXAMPLES
-  $ outline plugins:install myplugin 
+  $ dsgn-gnrtr plugins:install myplugin 
 
-  $ outline plugins:install https://github.com/someuser/someplugin
+  $ dsgn-gnrtr plugins:install https://github.com/someuser/someplugin
 
-  $ outline plugins:install someuser/someplugin
+  $ dsgn-gnrtr plugins:install someuser/someplugin
 ```
 
-## `outline plugins:inspect PLUGIN...`
+## `dsgn-gnrtr plugins:inspect PLUGIN...`
 
 Displays installation properties of a plugin.
 
 ```
 USAGE
-  $ outline plugins:inspect PLUGIN...
+  $ dsgn-gnrtr plugins:inspect PLUGIN...
 
 ARGUMENTS
   PLUGIN  [default: .] Plugin to inspect.
@@ -204,16 +164,16 @@ DESCRIPTION
   Displays installation properties of a plugin.
 
 EXAMPLES
-  $ outline plugins:inspect myplugin
+  $ dsgn-gnrtr plugins:inspect myplugin
 ```
 
-## `outline plugins:install PLUGIN...`
+## `dsgn-gnrtr plugins:install PLUGIN...`
 
 Installs a plugin into the CLI.
 
 ```
 USAGE
-  $ outline plugins:install PLUGIN...
+  $ dsgn-gnrtr plugins:install PLUGIN...
 
 ARGUMENTS
   PLUGIN  Plugin to install.
@@ -235,23 +195,23 @@ DESCRIPTION
   the CLI without the need to patch and update the whole CLI.
 
 ALIASES
-  $ outline plugins add
+  $ dsgn-gnrtr plugins add
 
 EXAMPLES
-  $ outline plugins:install myplugin 
+  $ dsgn-gnrtr plugins:install myplugin 
 
-  $ outline plugins:install https://github.com/someuser/someplugin
+  $ dsgn-gnrtr plugins:install https://github.com/someuser/someplugin
 
-  $ outline plugins:install someuser/someplugin
+  $ dsgn-gnrtr plugins:install someuser/someplugin
 ```
 
-## `outline plugins:link PLUGIN`
+## `dsgn-gnrtr plugins:link PLUGIN`
 
 Links a plugin into the CLI for development.
 
 ```
 USAGE
-  $ outline plugins:link PLUGIN
+  $ dsgn-gnrtr plugins:link PLUGIN
 
 ARGUMENTS
   PATH  [default: .] path to plugin
@@ -269,16 +229,16 @@ DESCRIPTION
   command will override the user-installed or core plugin implementation. This is useful for development work.
 
 EXAMPLES
-  $ outline plugins:link myplugin
+  $ dsgn-gnrtr plugins:link myplugin
 ```
 
-## `outline plugins:uninstall PLUGIN...`
+## `dsgn-gnrtr plugins:uninstall PLUGIN...`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ outline plugins:uninstall PLUGIN...
+  $ dsgn-gnrtr plugins:uninstall PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to uninstall
@@ -291,17 +251,17 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ outline plugins unlink
-  $ outline plugins remove
+  $ dsgn-gnrtr plugins unlink
+  $ dsgn-gnrtr plugins remove
 ```
 
-## `outline plugins:uninstall PLUGIN...`
+## `dsgn-gnrtr plugins:uninstall PLUGIN...`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ outline plugins:uninstall PLUGIN...
+  $ dsgn-gnrtr plugins:uninstall PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to uninstall
@@ -314,17 +274,17 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ outline plugins unlink
-  $ outline plugins remove
+  $ dsgn-gnrtr plugins unlink
+  $ dsgn-gnrtr plugins remove
 ```
 
-## `outline plugins:uninstall PLUGIN...`
+## `dsgn-gnrtr plugins:uninstall PLUGIN...`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ outline plugins:uninstall PLUGIN...
+  $ dsgn-gnrtr plugins:uninstall PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to uninstall
@@ -337,17 +297,17 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ outline plugins unlink
-  $ outline plugins remove
+  $ dsgn-gnrtr plugins unlink
+  $ dsgn-gnrtr plugins remove
 ```
 
-## `outline plugins update`
+## `dsgn-gnrtr plugins update`
 
 Update installed plugins.
 
 ```
 USAGE
-  $ outline plugins update [-h] [-v]
+  $ dsgn-gnrtr plugins update [-h] [-v]
 
 FLAGS
   -h, --help     Show CLI help.

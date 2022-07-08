@@ -1,15 +1,15 @@
 {
-  "name": "ds-gen",
+  "name": "@mabry/genesis",
   "version": "0.0.0",
   "description": "A CLI tool for generating Lit Element components, Storybook stories, and more!",
   "author": "Josh Mabry",
   "bin": {
-    "ds-gen": "./bin/run"
+    "dsgn-gnrtr": "./bin/run"
   },
-  "homepage": "https://github.com/mabry1985/ds-gen",
+  "homepage": "https://github.com/mabryCodes/genesis-design",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "mabry1985/ds-gen",
+  "repository": "mabry1985/dsgn-gnrtr",
   "files": [
     "/bin",
     "/dist",
@@ -39,8 +39,8 @@
     "typescript": "^4.4.3"
   },
   "oclif": {
-    "bin": "outline",
-    "dirname": "outline",
+    "bin": "dsgn-gnrtr",
+    "dirname": "dsgn-gnrtr",
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help",
@@ -67,7 +67,7 @@
   "engines": {
     "node": ">=12.0.0"
   },
-  "bugs": "https://github.com/mabry1985/ds-gen/issues",
+  "bugs": "https://github.com/mabryCodes/genesis-design/issues",
   "keywords": [
     "oclif"
   ],
