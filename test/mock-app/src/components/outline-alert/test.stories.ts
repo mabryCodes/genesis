@@ -49,6 +49,20 @@ const configuration = {
           summary: `true` 
         } 
       },
+    }, 
+    defaultSlot: {
+      control: 'text',
+      description: `The alert contents.`,
+      table: { 
+        category: 'Slots', 
+      },
+    },
+    headerSlot: {
+      control: 'text',
+      description: `The header in the alert.`,
+      table: { 
+        category: 'Slots', 
+      },
     },
   },
   args: {
@@ -56,17 +70,19 @@ const configuration = {
     size: "large",
     isInteractive: false,
     shouldShowIcon: true,
+    defaultSlot: `Enter slot content here`,
+    headerSlot: `Enter slot content here`,
   },
   parameters: {
-      source: {
-        code: `
+    source: {
+      code: `
 <outline-alert>
-  // Add your rendered code here for documentation purposes.
+  // Add the rendered code here for documentation purposes. Useful for more complex components.
 </outline-alert>
-        `,
-      },
+      `,
     },
-  };
+  },
+};
 
 export default configuration;
 
@@ -82,8 +98,19 @@ const Template = (args = configuration.args): TemplateResult => {
       ?isInteractive=${args.isInteractive}
       ?shouldShowIcon=${args.shouldShowIcon}
     >
+      
+      ${unsafeHTML(args.defaultSlot ?? '')}
+  
+      <div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
+  
     </outline-alert>
   `;
 }
 
 export const OutlineAlert = Template.bind({});
+
+export const OutlineAlertVariant = Template.bind({});
+OutlineAlertVariant.args = {
+  // overwrite args here for variant
+  // sampleArg: 'sample value',
+}

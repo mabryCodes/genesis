@@ -12,21 +12,27 @@ import './${componentName}';
 
 const configuration = {
   title: \`${category}/${kebabCaseToTitleSpaceCase(componentName)}\`,
-  component: '${componentName}', ${propertiesTemplate(componentData.attributes)}parameters: {
-      source: {
-        code: \`
+  component: '${componentName}', ${propertiesTemplate(componentData.attributes, componentData.slots)}parameters: {
+    source: {
+      code: \`
 <${componentName}>
-  // Add your rendered code here for documentation purposes.
+  // Add the rendered code here for documentation purposes. Useful for more complex components.
 </${componentName}>
-        \`,
-      },
+      \`,
     },
-  };
+  },
+};
 
 export default configuration;
 
-${templateRenderTemplate(componentData.attributes, componentName)}
+${templateRenderTemplate(componentData.attributes, componentData.slots, componentName)}
 
 export const ${kebabCaseToTitleCase(componentName)} = Template.bind({});
+
+export const ${kebabCaseToTitleCase(componentName)}Variant = Template.bind({});
+${kebabCaseToTitleCase(componentName)}Variant.args = {
+  // overwrite args here for variant
+  // sampleArg: 'sample value',
+}
 `
 }

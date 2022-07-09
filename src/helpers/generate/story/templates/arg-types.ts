@@ -25,27 +25,28 @@ const argsTypeTemplate = (arg: {
     },`
 }
 
-export const propertiesTemplate = (args: any[]): string => {
-  if (!args) return ''
+export const propertiesTemplate = (args: any[], slots: any[]): string => {
+  if (!args && !slots) return ''
 
   return `
-  argTypes: { ${args.map(arg => argsTypeTemplate(arg)).join('')}
+  argTypes: { ${args.map(arg => argsTypeTemplate(arg)).join('')} ${slots.map(arg => slotArgsTypeTemplate(arg)).join('')}
   },
   args: {${args.map(arg => argTemplate(arg)).join('')}
-  },
+  ${slots.map(arg => slotArgTemplate(arg)).join('')}},
   `
 }
 
-export const templateRenderTemplate = (attr: any, componentName: string): string => {
-  return attr && attr.length > 0 ?
+export const templateRenderTemplate = (attrs: any[], slots: any[], componentName: string): string => {
+  return attrs && attrs.length > 0 ?
     `const Template = (args = configuration.args): TemplateResult => {
   args = {
     ...configuration.args,
     ...args,
   };
   return html\`
-    <${componentName} ${attr.map((a: any) => attrTemplate(a)).join('')}
+    <${componentName} ${attrs.map((a: any) => attrTemplate(a)).join('')}
     >
+      ${slots.map((s: any) => slotRenderTemplate(s)).join('')}
     </${componentName}>
   \`;
 }` :
@@ -91,4 +92,30 @@ const parseControlType = (name: any, controlType: any) => {
     )
     return 'string'
   }
+}
+
+export const slotRenderTemplate = (slot: any): string => {
+  return slot.name === 'default'    ?
+    `
+      \${unsafeHTML(args.${kebabCaseToLowerCamelCase(slot.name)}Slot ?? '')}
+  `  :
+    `
+      <div slot="${slot.name}">\${unsafeHTML(args.${kebabCaseToLowerCamelCase(slot.name)}Slot ?? '')}</div>
+  `
+}
+
+const slotArgTemplate = (arg: any) => {
+  return `  ${kebabCaseToLowerCamelCase(arg.name)}Slot: \`Enter slot content here\`,
+  `
+}
+
+const slotArgsTypeTemplate = (arg: any) => {
+  return `
+    ${kebabCaseToLowerCamelCase(arg.name)}Slot: {
+      control: 'text',
+      description: \`${arg.description}\`,
+      table: { 
+        category: 'Slots', 
+      },
+    },`
 }
