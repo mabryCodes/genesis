@@ -1,4 +1,4 @@
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+
 import { html, TemplateResult } from 'lit';
 import './outline-alert';
 
@@ -59,21 +59,7 @@ const configuration = {
         summary: `true` 
       } 
     },
-  }, 
-  defaultSlot: {
-    control: 'text',
-    description: `The alert contents.`,
-    table: { 
-      category: 'Slots', 
-    },
-  },
-  headerSlot: {
-    control: 'text',
-    description: `The header in the alert.`,
-    table: { 
-      category: 'Slots', 
-    },
-  }, 
+  },  
   outlineAlertInfoBackground: {
     name: '--outline-alert-info-background',
     description: `The background color for the info alert.`,
@@ -164,8 +150,7 @@ const configuration = {
     size: "large",
     isInteractive: false,
     shouldShowIcon: true, 
-    defaultSlot: `Enter slot content here`,
-    headerSlot: `Enter slot content here`,
+
   },
   parameters: {
     docs: {
@@ -196,10 +181,7 @@ const Template = (args = configuration.args): TemplateResult => {
       ?should-show-icon=${args.shouldShowIcon}
     >
       
-      ${unsafeHTML(args.defaultSlot ?? '')}
-  
-      <div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
-  
+
     </outline-alert>
   `;
 }

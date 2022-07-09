@@ -1,5 +1,5 @@
 import {Command, Flags} from '@oclif/core'
-import {createStory} from '../../helpers/generate/story/generate-story'
+import {createStory} from '../../scripts/generate/story/generate-story'
 
 export default class GenerateStory extends Command {
   static description = 'Generates a Storybook story using the custom-elements.json file.'
@@ -29,10 +29,5 @@ export default class GenerateStory extends Command {
       flags.customElementsPath,
       flags.fullBleed,
     )
-    // if (args.name) {
-    //   this.log(`name: ${args.name}`)
-    // } else {
-    //   this.error('Missing component name argument. try --help')
-    // }
   }
 }

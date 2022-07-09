@@ -60,16 +60,6 @@
           "default": "[\"componentVars\",\"componentStyles\"]"
         }
       ],
-      "slots": [
-        {
-          "name": "default",
-          "description": "The alert contents."
-        },
-        {
-          "name": "header",
-          "description": "The header in the alert."
-        }
-      ],
       "cssProperties": [
         {
           "name": "--outline-alert-info-background",
