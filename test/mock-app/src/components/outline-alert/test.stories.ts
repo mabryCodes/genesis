@@ -6,148 +6,158 @@ const configuration = {
   title: `Content/Outline Alert`,
   component: 'outline-alert', 
   argTypes: { 
-    statusType: {
-      control: `string`,
-      name: `status-type`,
-      description: `undefined`,
-      table: { 
-        category: 'Properties', 
-        defaultValue: { 
-          summary: `"info"` 
-        } 
-      },
+  statusType: {
+    control: {
+      type: 'select',
+      options: ['info','warning','error','success']
     },
-    size: {
-      control: `string`,
-      name: `size`,
-      description: `undefined`,
-      table: { 
-        category: 'Properties', 
-        defaultValue: { 
-          summary: `"large"` 
-        } 
-      },
+    name: `status-type`,
+    description: `undefined`,
+    table: { 
+      category: 'Properties', 
+      defaultValue: { 
+        summary: `"info"` 
+      } 
     },
-    isInteractive: {
-      control: `boolean`,
-      name: `is-interactive`,
-      description: `This is important context for screen readers.`,
-      table: { 
-        category: 'Properties', 
-        defaultValue: { 
-          summary: `false` 
-        } 
-      },
+  },
+  size: {
+    control: {
+      type: 'select',
+      options: ['small','large']
     },
-    shouldShowIcon: {
-      control: `boolean`,
-      name: `should-show-icon`,
-      description: `undefined`,
-      table: { 
-        category: 'Properties', 
-        defaultValue: { 
-          summary: `true` 
-        } 
-      },
-    }, 
-    defaultSlot: {
-      control: 'text',
-      description: `The alert contents.`,
-      table: { 
-        category: 'Slots', 
-      },
+    name: `size`,
+    description: `undefined`,
+    table: { 
+      category: 'Properties', 
+      defaultValue: { 
+        summary: `"large"` 
+      } 
     },
-    headerSlot: {
-      control: 'text',
-      description: `The header in the alert.`,
-      table: { 
-        category: 'Slots', 
-      },
-    }, 
-    outlineAlertInfoBackground: {
-      name: '--outline-alert-info-background',
-      description: `The background color for the info alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
+  },
+  isInteractive: {
+    control: {
+      type: 'boolean'
     },
-    outlineAlertInfoText: {
-      name: '--outline-alert-info-text',
-      description: `The text color for the info alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
+    name: `is-interactive`,
+    description: `This is important context for screen readers.`,
+    table: { 
+      category: 'Properties', 
+      defaultValue: { 
+        summary: `false` 
+      } 
     },
-    outlineAlertInfoBorder: {
-      name: '--outline-alert-info-border',
-      description: `The border color for the info alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
+  },
+  shouldShowIcon: {
+    control: {
+      type: 'boolean'
     },
-    outlineAlertSuccessBackground: {
-      name: '--outline-alert-success-background',
-      description: `The background color for the success alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
+    name: `should-show-icon`,
+    description: `undefined`,
+    table: { 
+      category: 'Properties', 
+      defaultValue: { 
+        summary: `true` 
+      } 
     },
-    outlineAlertSuccessText: {
-      name: '--outline-alert-success-text',
-      description: `The text color for the success alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
+  }, 
+  defaultSlot: {
+    control: 'text',
+    description: `The alert contents.`,
+    table: { 
+      category: 'Slots', 
     },
-    outlineAlertSuccessBorder: {
-      name: '--outline-alert-success-border',
-      description: `The border color for the success alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
+  },
+  headerSlot: {
+    control: 'text',
+    description: `The header in the alert.`,
+    table: { 
+      category: 'Slots', 
     },
-    outlineAlertWarningBackground: {
-      name: '--outline-alert-warning-background',
-      description: `The background color for the warning alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },
-    outlineAlertWarningText: {
-      name: '--outline-alert-warning-text',
-      description: `The text color for the warning alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },
-    outlineAlertWarningBorder: {
-      name: '--outline-alert-warning-border',
-      description: `The border color for the warning alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },
-    outlineAlertErrorBackground: {
-      name: '--outline-alert-error-background',
-      description: `The background color for the error alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },
-    outlineAlertErrorText: {
-      name: '--outline-alert-error-text',
-      description: `The text color for the error alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },
-    outlineAlertErrorBorder: {
-      name: '--outline-alert-error-border',
-      description: `The border color for the error alert.`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },
+  }, 
+  outlineAlertInfoBackground: {
+    name: '--outline-alert-info-background',
+    description: `The background color for the info alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertInfoText: {
+    name: '--outline-alert-info-text',
+    description: `The text color for the info alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertInfoBorder: {
+    name: '--outline-alert-info-border',
+    description: `The border color for the info alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertSuccessBackground: {
+    name: '--outline-alert-success-background',
+    description: `The background color for the success alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertSuccessText: {
+    name: '--outline-alert-success-text',
+    description: `The text color for the success alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertSuccessBorder: {
+    name: '--outline-alert-success-border',
+    description: `The border color for the success alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertWarningBackground: {
+    name: '--outline-alert-warning-background',
+    description: `The background color for the warning alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertWarningText: {
+    name: '--outline-alert-warning-text',
+    description: `The text color for the warning alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertWarningBorder: {
+    name: '--outline-alert-warning-border',
+    description: `The border color for the warning alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertErrorBackground: {
+    name: '--outline-alert-error-background',
+    description: `The background color for the error alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertErrorText: {
+    name: '--outline-alert-error-text',
+    description: `The text color for the error alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
+  outlineAlertErrorBorder: {
+    name: '--outline-alert-error-border',
+    description: `The border color for the error alert.`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },
   },
   args: {
     statusType: "info",
@@ -182,8 +192,8 @@ const Template = (args = configuration.args): TemplateResult => {
     <outline-alert 
       status-type=${args.statusType}
       size=${args.size}
-      ?isInteractive=${args.isInteractive}
-      ?shouldShowIcon=${args.shouldShowIcon}
+      ?is-interactive=${args.isInteractive}
+      ?should-show-icon=${args.shouldShowIcon}
     >
       
       ${unsafeHTML(args.defaultSlot ?? '')}
