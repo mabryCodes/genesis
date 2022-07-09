@@ -63,24 +63,111 @@ const configuration = {
       table: { 
         category: 'Slots', 
       },
+    }, 
+    outlineAlertInfoBackground: {
+      name: '--outline-alert-info-background',
+      description: `The background color for the info alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertInfoText: {
+      name: '--outline-alert-info-text',
+      description: `The text color for the info alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertInfoBorder: {
+      name: '--outline-alert-info-border',
+      description: `The border color for the info alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertSuccessBackground: {
+      name: '--outline-alert-success-background',
+      description: `The background color for the success alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertSuccessText: {
+      name: '--outline-alert-success-text',
+      description: `The text color for the success alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertSuccessBorder: {
+      name: '--outline-alert-success-border',
+      description: `The border color for the success alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertWarningBackground: {
+      name: '--outline-alert-warning-background',
+      description: `The background color for the warning alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertWarningText: {
+      name: '--outline-alert-warning-text',
+      description: `The text color for the warning alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertWarningBorder: {
+      name: '--outline-alert-warning-border',
+      description: `The border color for the warning alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertErrorBackground: {
+      name: '--outline-alert-error-background',
+      description: `The background color for the error alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertErrorText: {
+      name: '--outline-alert-error-text',
+      description: `The text color for the error alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
+    },
+    outlineAlertErrorBorder: {
+      name: '--outline-alert-error-border',
+      description: `The border color for the error alert.`,
+      table: {
+        category: 'CSS Variables',
+      }
     },
   },
   args: {
     statusType: "info",
     size: "large",
     isInteractive: false,
-    shouldShowIcon: true,
+    shouldShowIcon: true, 
     defaultSlot: `Enter slot content here`,
     headerSlot: `Enter slot content here`,
   },
   parameters: {
-    source: {
-      code: `
+    docs: {
+      source: {
+        code: `
 <outline-alert>
   // Add the rendered code here for documentation purposes. Useful for more complex components.
 </outline-alert>
-      `,
-    },
+        `,
+      }
+    }, 
+    
   },
 };
 

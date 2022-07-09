@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "outline-alert",
-      "path": "./components/outline-alert/outline-alert.ts",
+      "path": "./components/base/outline-alert/outline-alert.ts",
       "description": "The Outline Alert component",
       "attributes": [
         {
@@ -72,20 +72,52 @@
       ],
       "cssProperties": [
         {
-          "name": "--outline-alert-info",
-          "description": "background: The background color for the info alert."
+          "name": "--outline-alert-info-background",
+          "description": "The background color for the info alert."
         },
         {
-          "name": "--outline-alert-success",
-          "description": "background: The background color for the success alert."
+          "name": "--outline-alert-info-text",
+          "description": "The text color for the info alert."
         },
         {
-          "name": "--outline-alert-warning",
-          "description": "background: The background color for the warning alert."
+          "name": "--outline-alert-info-border",
+          "description": "The border color for the info alert."
         },
         {
-          "name": "--outline-alert-error",
-          "description": "background: The background color for the error alert."
+          "name": "--outline-alert-success-background",
+          "description": "The background color for the success alert."
+        },
+        {
+          "name": "--outline-alert-success-text",
+          "description": "The text color for the success alert."
+        },
+        {
+          "name": "--outline-alert-success-border",
+          "description": "The border color for the success alert."
+        },
+        {
+          "name": "--outline-alert-warning-background",
+          "description": "The background color for the warning alert."
+        },
+        {
+          "name": "--outline-alert-warning-text",
+          "description": "The text color for the warning alert."
+        },
+        {
+          "name": "--outline-alert-warning-border",
+          "description": "The border color for the warning alert."
+        },
+        {
+          "name": "--outline-alert-error-background",
+          "description": "The background color for the error alert."
+        },
+        {
+          "name": "--outline-alert-error-text",
+          "description": "The text color for the error alert."
+        },
+        {
+          "name": "--outline-alert-error-border",
+          "description": "The border color for the error alert."
         }
       ]
     }
