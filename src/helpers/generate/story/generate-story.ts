@@ -45,7 +45,7 @@ export const createStory = (
         output ? path.resolve(currDir, output)          :
           path.resolve(currDir, `src/components/${nameSpaceFolder}/${component}/generated-${component}.stories.ts`)
 
-    console.log('Creating story for', componentPath)
+    console.log('Creating story for', component, 'at', componentPath)
 
     fs.writeFile(
       componentPath,

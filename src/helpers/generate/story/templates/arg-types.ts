@@ -12,16 +12,51 @@ const argsTypeTemplate = (arg: {
   default: any;
 }) => {
   return `
-    ${kebabCaseToLowerCamelCase(arg.name)}: {
-      control: \`${parseControlType(arg.name, arg.type)}\`,
-      name: \`${camelCaseToKebabCase(arg.name)}\`,
-      description: \`${arg.description}\`,
-      table: { 
-        category: 'Properties', 
-        defaultValue: { 
-          summary: \`${arg.default || '-'}\` 
-        } 
-      },
+  ${kebabCaseToLowerCamelCase(arg.name)}: {
+    ${controlTemplate(arg)}
+    name: \`${camelCaseToKebabCase(arg.name)}\`,
+    description: \`${arg.description}\`,
+    table: { 
+      category: 'Properties', 
+      defaultValue: { 
+        summary: \`${arg.default || '-'}\` 
+      } 
+    },
+  },`
+}
+
+/**
+ * @todo add support for additional/custom control types (e.g. color, number, etc.)
+ * @param {*} name
+ * @param {*} controlType
+ * @returns void
+ */
+const parseControlType = (name: any, controlType: any) => {
+  switch (controlType) {
+  case 'string':
+    return 'string'
+  case 'number':
+    return 'number'
+  case 'boolean':
+    return 'boolean'
+  default:
+    return 'select'
+  }
+}
+
+const controlTemplate = (arg: any) => {
+  const controlType = parseControlType(arg.name, arg.type)
+
+  if (controlType === 'select') {
+    const options = arg.type.split('"').filter((n: string) => n && n.trim() !== '|')
+    return `control: {
+      type: '${controlType}',
+      options: [${options.map((option: string) => `'${option}'`)}]
+    },`
+  }
+
+  return `control: {
+      type: '${controlType}'
     },`
 }
 
@@ -71,28 +106,6 @@ export const attrTemplate = (attr: any): string => {
       ${attribute}=\${args.${kebabCaseToLowerCamelCase(attr.name)}}`
 }
 
-/**
- * @todo add support for additional/custom control types (e.g. color, number, etc.)
- * @param {*} name
- * @param {*} controlType
- * @returns void
- */
-const parseControlType = (name: any, controlType: any) => {
-  switch (controlType) {
-  case 'string':
-    return 'string'
-  case 'number':
-    return 'number'
-  case 'boolean':
-    return 'boolean'
-  default:
-    console.log(
-      `${name} with type of ${controlType} is an unknown control type. If using a custom type you must add it to story manually.`,
-    )
-    return 'string'
-  }
-}
-
 export const slotRenderTemplate = (slot: any): string => {
   return slot.name === 'default'    ?
     `
@@ -108,23 +121,23 @@ const slotArgTemplate = (arg: any) => `
 
 const slotArgsTypeTemplate = (arg: any) => {
   return `
-    ${kebabCaseToLowerCamelCase(arg.name)}Slot: {
-      control: 'text',
-      description: \`${arg.description}\`,
-      table: { 
-        category: 'Slots', 
-      },
-    },`
+  ${kebabCaseToLowerCamelCase(arg.name)}Slot: {
+    control: 'text',
+    description: \`${arg.description}\`,
+    table: { 
+      category: 'Slots', 
+    },
+  },`
 }
 
 // @todo add ability to collapse the css vars table by default if possible
 const cssVarArgsTypeTemplate = (arg: any) => {
   return `
-    ${cssVarCaseToLowerCamelCase(arg.name)}: {
-      name: '${arg.name}',
-      description: \`${arg.description}\`,
-      table: {
-        category: 'CSS Variables',
-      }
-    },`
+  ${cssVarCaseToLowerCamelCase(arg.name)}: {
+    name: '${arg.name}',
+    description: \`${arg.description}\`,
+    table: {
+      category: 'CSS Variables',
+    }
+  },`
 }
