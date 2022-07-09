@@ -61,11 +61,10 @@ const controlTemplate = (arg: any) => {
 }
 
 export const propertiesTemplate = (args: any[], slots: any[], cssVars: any[]): string => {
-  if (!args && !slots) return ''
   return `
-  argTypes: { ${args.map(arg => argsTypeTemplate(arg)).join('')} ${slots && slots.map(arg => slotArgsTypeTemplate(arg)).join('')} ${cssVars && cssVars.map(arg => cssVarArgsTypeTemplate(arg)).join('')}
+  argTypes: { ${args ? args.map(arg => argsTypeTemplate(arg)).join('') : ''} ${slots ? slots.map(arg => slotArgsTypeTemplate(arg)).join('') : ''} ${cssVars ? cssVars.map(arg => cssVarArgsTypeTemplate(arg)).join('') : ''}
   },
-  args: {${args.map(arg => argTemplate(arg)).join('')} ${slots && slots.map(arg => slotArgTemplate(arg)).join('')}
+  args: {${args.map(arg => argTemplate(arg)).join('')} ${slots ? slots.map(arg => slotArgTemplate(arg)).join('') : '\n'}
   },
   `
 }
@@ -80,7 +79,7 @@ export const templateRenderTemplate = (attrs: any[], slots: any[], componentName
   return html\`
     <${componentName} ${attrs.map((a: any) => attrTemplate(a)).join('')}
     >
-      ${slots.map((s: any) => slotRenderTemplate(s)).join('')}
+      ${slots ? slots.map((s: any) => slotRenderTemplate(s)).join('') : '\n'}
     </${componentName}>
   \`;
 }` :

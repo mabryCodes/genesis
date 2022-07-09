@@ -7,9 +7,7 @@ export const storybookTemplate = (
   category: string,
   fullBleed: boolean,
 ): string => {
-  return `import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { html, TemplateResult } from 'lit';
-import './${componentName}';
+  return `${importTemplate(componentName, componentData)}
 
 const configuration = {
   title: \`${category}/${kebabCaseToTitleSpaceCase(componentName)}\`,
@@ -39,4 +37,10 @@ ${kebabCaseToTitleCase(componentName)}Variant.args = {
   // sampleArg: 'sample value',
 }
 `
+}
+
+const importTemplate = (componentName: string, componentData: {attributes: any; slots: any; cssVars: any}) => {
+  return `${componentData.slots ? "import { unsafeHTML } from 'lit/directives/unsafe-html.js'" : ''}
+import { html, TemplateResult } from 'lit';
+import './${componentName}';`
 }
