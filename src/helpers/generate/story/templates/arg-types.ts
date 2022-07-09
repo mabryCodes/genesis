@@ -1,4 +1,4 @@
-import {camelCaseToKebabCase, kebabCaseToLowerCamelCase} from '../../../utility'
+import {camelCaseToKebabCase, cssVarCaseToLowerCamelCase, kebabCaseToLowerCamelCase} from '../../../utility'
 
 const argTemplate = (arg: { name: string; default: any }): string => {
   return `
@@ -25,14 +25,13 @@ const argsTypeTemplate = (arg: {
     },`
 }
 
-export const propertiesTemplate = (args: any[], slots: any[]): string => {
+export const propertiesTemplate = (args: any[], slots: any[], cssVars: any[]): string => {
   if (!args && !slots) return ''
-
   return `
-  argTypes: { ${args.map(arg => argsTypeTemplate(arg)).join('')} ${slots.map(arg => slotArgsTypeTemplate(arg)).join('')}
+  argTypes: { ${args.map(arg => argsTypeTemplate(arg)).join('')} ${slots && slots.map(arg => slotArgsTypeTemplate(arg)).join('')} ${cssVars && cssVars.map(arg => cssVarArgsTypeTemplate(arg)).join('')}
   },
-  args: {${args.map(arg => argTemplate(arg)).join('')}
-  ${slots.map(arg => slotArgTemplate(arg)).join('')}},
+  args: {${args.map(arg => argTemplate(arg)).join('')} ${slots && slots.map(arg => slotArgTemplate(arg)).join('')}
+  },
   `
 }
 
@@ -104,10 +103,8 @@ export const slotRenderTemplate = (slot: any): string => {
   `
 }
 
-const slotArgTemplate = (arg: any) => {
-  return `  ${kebabCaseToLowerCamelCase(arg.name)}Slot: \`Enter slot content here\`,
-  `
-}
+const slotArgTemplate = (arg: any) => `
+    ${kebabCaseToLowerCamelCase(arg.name)}Slot: \`Enter slot content here\`,`
 
 const slotArgsTypeTemplate = (arg: any) => {
   return `
@@ -117,5 +114,17 @@ const slotArgsTypeTemplate = (arg: any) => {
       table: { 
         category: 'Slots', 
       },
+    },`
+}
+
+// @todo add ability to collapse the css vars table by default if possible
+const cssVarArgsTypeTemplate = (arg: any) => {
+  return `
+    ${cssVarCaseToLowerCamelCase(arg.name)}: {
+      name: '${arg.name}',
+      description: \`${arg.description}\`,
+      table: {
+        category: 'CSS Variables',
+      }
     },`
 }
