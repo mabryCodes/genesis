@@ -5,6 +5,7 @@ export const storybookTemplate = (
   componentName: string,
   componentData: { attributes: any; slots: any; cssVars: any },
   category: string,
+  fullBleed: boolean,
 ): string => {
   return `import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { html, TemplateResult } from 'lit';
@@ -12,14 +13,17 @@ import './${componentName}';
 
 const configuration = {
   title: \`${category}/${kebabCaseToTitleSpaceCase(componentName)}\`,
-  component: '${componentName}', ${propertiesTemplate(componentData.attributes, componentData.slots)}parameters: {
-    source: {
-      code: \`
+  component: '${componentName}', ${propertiesTemplate(componentData.attributes, componentData.slots, componentData.cssVars)}parameters: {
+    docs: {
+      source: {
+        code: \`
 <${componentName}>
   // Add the rendered code here for documentation purposes. Useful for more complex components.
 </${componentName}>
-      \`,
-    },
+        \`,
+      }
+    }, 
+    ${fullBleed ? 'layout: "fullscreen",' : ''}
   },
 };
 
