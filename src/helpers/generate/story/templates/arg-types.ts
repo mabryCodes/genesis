@@ -96,7 +96,7 @@ export const attrTemplate = (attr: any): string => {
 
   switch (attr.type) {
   case 'boolean':
-    attribute = `?${attr.name}`
+    attribute = `?${attribute}`
     break
   default:
     break
