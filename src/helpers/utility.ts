@@ -49,3 +49,21 @@ export const camelCaseToKebabCase = (str: string): string => {
 
   return str
 }
+
+/**
+ * Converts string from css variable to lowerCamelCase
+ * example '--outline-button' => 'outlineButton'
+ * @param str
+ * @returns
+ */
+export const cssVarCaseToLowerCamelCase = (str: string): string => {
+  const arr = str.split('-').filter(n => n)
+  const formattedArr = arr.map((el, i) => {
+    if (i === 0) {
+      return el
+    }
+
+    return el.charAt(0).toUpperCase() + el.slice(1)
+  })
+  return formattedArr.join('')
+}
