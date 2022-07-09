@@ -11,15 +11,24 @@ export default class GenerateStory extends Command {
   static args = [{name: 'name', required: true, description: 'name of component'}]
 
   static flags = {
-    fullBleed: Flags.boolean({char: 'f', description: 'removes padding in story canvas, useful for testing full bleed components'}),
+    fullBleed: Flags.boolean({char: 'f', description: 'allow the component to expand to the full width and height of the Storybook Canvas'}),
     output: Flags.string({char: 'o', description: 'category for the story, defaults to the same path as the component'}),
-    path: Flags.string({char: 'p', description: 'path to custom-elements.json. Defaults to \'../src/custom-elements.json\''}),
-    category: Flags.string({char: 'c', description: 'category for the story', default: 'Content'}),
+    customElementsPath: Flags.string({char: 'p', description: 'path to custom-elements.json. overrides config setting'}),
+    category: Flags.string({char: 'c', description: 'category for the story', default: 'Content'},
+    ),
+    nameSpace: Flags.string({char: 'n', description: 'name space for the component. defaults to the base name used for the component'}),
   }
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(GenerateStory)
-    createStory(args.name, flags.output, flags.path, flags.category)
+    createStory(
+      args.name,
+      flags.output,
+      flags.nameSpace,
+      flags.category,
+      flags.customElementsPath,
+      flags.fullBleed,
+    )
     // if (args.name) {
     //   this.log(`name: ${args.name}`)
     // } else {
