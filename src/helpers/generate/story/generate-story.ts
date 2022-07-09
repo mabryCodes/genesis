@@ -5,8 +5,8 @@ import path = require('path');
 import {storybookTemplate} from './templates'
 
 const config = {
-  // customElementPath: 'src/custom-element.json',
   customElementPath: 'test/mock-app/src/custom-element.json',
+  baseClass: 'LitElement',
   // defaultNamespace: 'outline',
 }
 
@@ -32,12 +32,11 @@ export const createStory = (
     const componentData = customElements.tags.find(
       (tag: { name: any }) => tag.name === component,
     )
-
-    const hasAttributes = componentData.attributes
-    const hasSlots = componentData.slots
-    const hasCssVariables = componentData.cssVariables
-
+    const attributes = componentData.attributes
+    const slots = componentData.slots
+    const cssVars = componentData.cssVariables
     const namespace = component.split('-')[0]
+
     // @todo make this dynamic and leverage the config
     const nameSpaceFolder = namespace === 'outline' ? 'base' : namespace
     const componentPath =
@@ -51,9 +50,9 @@ export const createStory = (
       storybookTemplate(
         component,
         {
-          attributes: hasAttributes,
-          slots: hasSlots,
-          cssVars: hasCssVariables,
+          attributes,
+          slots,
+          cssVars,
         },
         category,
       ),
