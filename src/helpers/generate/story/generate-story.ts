@@ -21,8 +21,10 @@ const config = {
 export const createStory = (
   component: string,
   output?: string,
-  customElementPath = config.customElementPath,
+  nameSpace?: string,
   category = 'Content',
+  customElementPath = config.customElementPath,
+  fullBleed = false,
 ): void => {
   const currDir = process.cwd()
   const resolvedPath = path.resolve(currDir, customElementPath)
@@ -34,7 +36,7 @@ export const createStory = (
     )
     const attributes = componentData.attributes
     const slots = componentData.slots
-    const cssVars = componentData.cssVariables
+    const cssVars = componentData.cssProperties
     const namespace = component.split('-')[0]
 
     // @todo make this dynamic and leverage the config
@@ -55,6 +57,7 @@ export const createStory = (
           cssVars,
         },
         category,
+        fullBleed,
       ),
       error => {
         if (error) {
