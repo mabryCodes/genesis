@@ -1,5 +1,5 @@
 import {Command, Flags} from '@oclif/core'
-import {createComponent} from '../../scripts/generate/component/generate-component'
+import {createComponent} from '../scripts/component/generate-component'
 export default class GenerateComponent extends Command {
   static description = 'describe the command here'
 

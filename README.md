@@ -31,8 +31,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`genesis generate component NAME`](#genesis-generate-component-name)
-* [`genesis generate story NAME`](#genesis-generate-story-name)
+* [`genesis component NAME`](#genesis-component-name)
 * [`genesis help [COMMAND]`](#genesis-help-command)
 * [`genesis plugins`](#genesis-plugins)
 * [`genesis plugins:install PLUGIN...`](#genesis-pluginsinstall-plugin)
@@ -43,14 +42,15 @@ USAGE
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-1)
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-2)
 * [`genesis plugins update`](#genesis-plugins-update)
+* [`genesis story NAME`](#genesis-story-name)
 
-## `genesis generate component NAME`
+## `genesis component NAME`
 
 describe the command here
 
 ```
 USAGE
-  $ genesis generate component [NAME] [-b <value>] [-f] [-n <value>]
+  $ genesis component [NAME] [-b <value>] [-f] [-n <value>]
 
 ARGUMENTS
   NAME  name of component
@@ -64,33 +64,10 @@ DESCRIPTION
   describe the command here
 
 EXAMPLES
-  $ genesis generate component
+  $ genesis component
 ```
 
-## `genesis generate story NAME`
-
-Generates a Storybook story using the custom-elements.json file.
-
-```
-USAGE
-  $ genesis generate story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-n <value>]
-
-ARGUMENTS
-  NAME  name of component
-
-FLAGS
-  -c, --category=<value>            [default: Content] category for the story
-  -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
-  -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
-  -o, --output=<value>              category for the story, defaults to the same path as the component
-  -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
-
-DESCRIPTION
-  Generates a Storybook story using the custom-elements.json file.
-
-EXAMPLES
-  $ genesis generate story
-```
+_See code: [dist/commands/component.ts](https://github.com/mabry1985/genesis/blob/v0.0.0/dist/commands/component.ts)_
 
 ## `genesis help [COMMAND]`
 
@@ -341,4 +318,31 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
+
+## `genesis story NAME`
+
+Generates a Storybook story using the custom-elements.json file.
+
+```
+USAGE
+  $ genesis story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-n <value>]
+
+ARGUMENTS
+  NAME  name of component
+
+FLAGS
+  -c, --category=<value>            [default: Content] category for the story
+  -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
+  -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
+  -o, --output=<value>              category for the story, defaults to the same path as the component
+  -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
+
+DESCRIPTION
+  Generates a Storybook story using the custom-elements.json file.
+
+EXAMPLES
+  $ genesis story
+```
+
+_See code: [dist/commands/story.ts](https://github.com/mabry1985/genesis/blob/v0.0.0/dist/commands/story.ts)_
 <!-- commandsstop -->
