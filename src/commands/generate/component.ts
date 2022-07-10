@@ -1,5 +1,5 @@
 import {Command, Flags} from '@oclif/core'
-
+import {createComponent} from '../../scripts/generate/component/generate-component'
 export default class GenerateComponent extends Command {
   static description = 'describe the command here'
 
@@ -19,10 +19,6 @@ export default class GenerateComponent extends Command {
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(GenerateComponent)
-    if (args.name) this.log(`name: ${args.name}`)
-
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    createComponent(args.name, flags.baseClass)
   }
 }
