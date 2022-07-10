@@ -9,7 +9,7 @@
   "homepage": "https://github.com/mabryCodes/genesis",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "mabry1985/genesis",
+  "repository": "mabryCodes/genesis",
   "files": [
     "/bin",
     "/dist",

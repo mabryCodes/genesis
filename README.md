@@ -67,7 +67,7 @@ EXAMPLES
   $ genesis component
 ```
 
-_See code: [dist/commands/component.ts](https://github.com/mabry1985/genesis/blob/v0.0.0/dist/commands/component.ts)_
+_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.0.0/dist/commands/component.ts)_
 
 ## `genesis help [COMMAND]`
 
@@ -344,5 +344,5 @@ EXAMPLES
   $ genesis story
 ```
 
-_See code: [dist/commands/story.ts](https://github.com/mabry1985/genesis/blob/v0.0.0/dist/commands/story.ts)_
+_See code: [dist/commands/story.ts](https://github.com/mabryCodes/genesis/blob/v0.0.0/dist/commands/story.ts)_
 <!-- commandsstop -->
