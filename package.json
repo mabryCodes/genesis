@@ -59,6 +59,7 @@
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif readme && git add README.md",
     "generate:story": "./bin/run generate:story",
+    "generate:component": "./bin/run generate:component",
     "generate:story:test": "./bin/run generate:story outline-alert -o test/mock-app/src/components/outline-alert/test.stories.ts"
   },
   "engines": {

@@ -31,6 +31,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`genesis generate component NAME`](#genesis-generate-component-name)
 * [`genesis generate story NAME`](#genesis-generate-story-name)
 * [`genesis help [COMMAND]`](#genesis-help-command)
 * [`genesis plugins`](#genesis-plugins)
@@ -43,22 +44,46 @@ USAGE
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-2)
 * [`genesis plugins update`](#genesis-plugins-update)
 
+## `genesis generate component NAME`
+
+describe the command here
+
+```
+USAGE
+  $ genesis generate component [NAME] [-b <value>] [-f] [-n <value>]
+
+ARGUMENTS
+  NAME  name of component
+
+FLAGS
+  -b, --baseClass=<value>  [default: LitElement] name of base class to inherit from
+  -f, --force
+  -n, --nameSpace=<value>  name space for the component. defaults to the base name used for the component
+
+DESCRIPTION
+  describe the command here
+
+EXAMPLES
+  $ genesis generate component
+```
+
 ## `genesis generate story NAME`
 
 Generates a Storybook story using the custom-elements.json file.
 
 ```
 USAGE
-  $ genesis generate story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>]
+  $ genesis generate story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-n <value>]
 
 ARGUMENTS
   NAME  name of component
 
 FLAGS
-  -c, --category=<value>  [default: Content] category for the story
-  -f, --fullBleed         removes padding in story canvas, useful for testing full bleed components
-  -o, --output=<value>    category for the story, defaults to the same path as the component
-  -p, --path=<value>      path to custom-elements.json. Defaults to '../src/custom-elements.json'
+  -c, --category=<value>            [default: Content] category for the story
+  -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
+  -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
+  -o, --output=<value>              category for the story, defaults to the same path as the component
+  -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
 
 DESCRIPTION
   Generates a Storybook story using the custom-elements.json file.
