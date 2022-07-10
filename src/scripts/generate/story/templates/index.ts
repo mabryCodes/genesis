@@ -161,6 +161,7 @@ export const storybookTemplate = (
   const renderTemp = renderTemplate(componentData.attributes, componentData.slots, componentName)
 
   return `${importTemplate(componentName, componentData)}
+
 const configuration = {
   title: \`${category}/${nameTitleSpaceCase}\`,
   component: '${componentName}', ${propTemp} 
