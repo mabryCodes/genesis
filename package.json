@@ -1,6 +1,6 @@
 {
   "name": "@mabry/genesis",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A CLI tool for generating Lit Element components, Storybook stories, and more!",
   "author": "Josh Mabry",
   "bin": {
