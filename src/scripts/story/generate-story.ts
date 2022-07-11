@@ -187,25 +187,6 @@ const replaceParameters = (params: any, storyPath: any) => {
   })
 }
 
-// /**
-//  * @param componentName - component name
-//  * @param attrs - component attributes
-//  * @param slots - component slots
-//  * @param storyPath - path to story file
-//  */
-// const replaceRender = (componentName: string, attrs: any[], slots: any[], storyPath: string) => {
-//   const marker = '// RENDER'
-//   const template = renderTemplate(componentName, attrs, slots)
-
-//   replace({
-//     regex: marker,
-//     replacement: template,
-//     paths: [storyPath],
-//     recursive: false,
-//     silent: true,
-//   })
-// }
-
 const replaceAttributes = (data: any, storyPath: string) => {
   const marker = '// ATTRIBUTES'
   const attributes = attributesTemplate(data.attributes)
