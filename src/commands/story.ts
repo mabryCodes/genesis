@@ -21,13 +21,6 @@ export default class GenerateStory extends Command {
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(GenerateStory)
-    createStory(
-      args.name,
-      flags.output,
-      flags.nameSpace,
-      flags.category,
-      flags.customElementsPath,
-      flags.fullBleed,
-    )
+    createStory(args, flags)
   }
 }
