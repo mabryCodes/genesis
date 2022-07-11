@@ -1,4 +1,5 @@
 import {camelCaseToKebabCase, cssVarCaseToLowerCamelCase, kebabCaseToLowerCamelCase, kebabCaseToTitleCase, kebabCaseToTitleSpaceCase} from '../../../utility/utility'
+import storyTemplate from './story-template'
 
 /**
  * @todo add support for additional/custom control types (e.g. color, number, etc.)
@@ -56,7 +57,6 @@ export const renderTemplate = (
   const properties = attrs && attrs.length > 0 ? attrs.map((a: any) => attrTemplate(a)).join('') : ''
   const slotsContent = slots && slots.length > 0 ? slots.map((s: any) => slotRenderTemplate(s)).join('') : ''
 
-  // @todo clean up this return
   return properties ?
     `const Template = (args = configuration.args): TemplateResult => {
   args = {
