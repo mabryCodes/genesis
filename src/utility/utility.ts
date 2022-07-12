@@ -54,7 +54,7 @@ export const camelCaseToKebabCase = (str: string): string => {
  * Converts string from css variable to lowerCamelCase
  * example '--outline-button' => 'outlineButton'
  * @param str
- * @returns
+ * @returns string
  */
 export const cssVarCaseToLowerCamelCase = (str: string): string => {
   const arr = str.split('-').filter(n => n)
@@ -66,4 +66,18 @@ export const cssVarCaseToLowerCamelCase = (str: string): string => {
     return el.charAt(0).toUpperCase() + el.slice(1)
   })
   return formattedArr.join('')
+}
+
+/**
+ * Returns the content in between two strings within a string
+ * @param start - the first string to start the search
+ * @param end - the last string to end the search
+ * @param str - the string to search in
+ * @returns string
+*/
+export const getContentBetween = (start: string, end: string, str: string): string => {
+  return str.slice(
+    str.indexOf(start) + start.length,
+    str.lastIndexOf(end),
+  )
 }
