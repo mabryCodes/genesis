@@ -63,10 +63,12 @@
     "prepack": "yarn build && oclif manifest && oclif readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif readme && git add README.md",
-    "cli:story": "./bin/run story",
-    "cli:story:test": "./bin/dev story:create outline-alert -o test/mock-app/src/components/outline-alert/test.stories.ts",
-    "cli:component": "./bin/run component",
-    "cli:component:test": "./bin/dev component outline-egg"
+    "story:create": "./bin/dev story",
+    "story:create:test": "./bin/dev story:create outline-alert -o test/mock-app/src/components/outline-alert/test.stories.ts",
+    "story:update": "./bin/dev story",
+    "story:update:test": "./bin/dev story:update outline-alert -o test/mock-app/src/components/outline-alert/update-test.stories.ts -s test/mock-app/src/components/outline-alert/test.stories.ts",
+    "component:create": "./bin/dev component",
+    "component:create:test": "./bin/dev component outline-egg"
   },
   "engines": {
     "node": ">=12.0.0"
