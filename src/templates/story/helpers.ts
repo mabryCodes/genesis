@@ -1,4 +1,8 @@
-import {camelCaseToKebabCase, kebabCaseToLowerCamelCase, cssVarCaseToLowerCamelCase} from '../../../utility/utility'
+import {camelCaseToKebabCase, kebabCaseToLowerCamelCase, cssVarCaseToLowerCamelCase} from '../../utility/utility'
+
+export const attributesTemplate = (attrs: any[]): string => {
+  return attrs.map((a: any) => attrTemplate(a)).join('')
+}
 
 export const attrTemplate = (attr: any): string => {
   let attribute = camelCaseToKebabCase(attr.name)
@@ -116,33 +120,6 @@ const controlTemplate = (arg: any) => {
       },`
 }
 
-export const attributesTemplate = (attrs: any[]): string => {
-  return attrs.map((a: any) => attrTemplate(a)).join('')
-}
-
 export const slotContentTemplate = (slots: any[]): string => {
   return slots.map((s: any) => slotRenderTemplate(s)).join('')
 }
-
-// export const renderTemplate = (
-//   componentName: string,
-//   attrs: any[],
-//   slots: any,
-// ) => {
-//   // const properties = attrs && attrs.length > 0 ? attrs.map((a: any) => attrTemplate(a)).join('') : ''
-//   const slotsContent = slots && slots.length > 0 ? slots.map((s: any) => slotRenderTemplate(s)).join('') : ''
-
-//   return `const Template = (args = configuration.args): TemplateResult => {
-// args = {
-//   ...configuration.args,
-//   ...args,
-// };
-
-// return html\`
-//   <${componentName}
-//     ${properties} >
-//     ${slotsContent}
-//   </${componentName}>
-// \`;
-// }`
-// }

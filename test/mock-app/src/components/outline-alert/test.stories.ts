@@ -19,7 +19,8 @@ const configuration = {
           summary: "info"
         } 
       },
-    },		size: {
+    },
+		size: {
       control: {
         type: 'select',
         options: ['small','large']
@@ -32,7 +33,8 @@ const configuration = {
           summary: "large"
         } 
       },
-    },		isInteractive: {
+    },
+		isInteractive: {
       control: {
         type: 'boolean'
       },
@@ -44,7 +46,8 @@ const configuration = {
           summary: false
         } 
       },
-    },		shouldShowIcon: {
+    },
+		shouldShowIcon: {
       control: {
         type: 'boolean'
       },
@@ -56,7 +59,8 @@ const configuration = {
           summary: true
         } 
       },
-    },		
+    },
+		
     
     defaultSlot: {
       control: 'text',
@@ -77,7 +81,9 @@ const configuration = {
     size: "large",
     isInteractive: false,
     shouldShowIcon: true, 
-  defaultSlot: `Enter slot content here`,		headerSlot: `Enter slot content here`,		
+  defaultSlot: `Enter slot content here`,
+		headerSlot: `Enter slot content here`,
+		
   
   },
   parameters: {
@@ -105,9 +111,14 @@ const Template = (args = configuration.args): TemplateResult => {
   
   return html`
       <outline-alert
-      status-type=${args.statusType}			size=${args.size}			?isInteractive=${args.isInteractive}			?shouldShowIcon=${args.shouldShowIcon}			
+      status-type=${args.statusType}
+			size=${args.size}
+			?isInteractive=${args.isInteractive}
+			?shouldShowIcon=${args.shouldShowIcon}
+			
       >
-      	${unsafeHTML(args.defaultSlot ?? '')}			<div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
+      	${unsafeHTML(args.defaultSlot ?? '')}
+			<div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
       </outline-alert>
    `;
 }
