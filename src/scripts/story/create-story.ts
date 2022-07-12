@@ -24,7 +24,7 @@ const config = {
  * @param {string} category - category of component defaults to 'Content'
  */
 export const createStory = (args: any, flags: any): void => {
-  const componentName = args.name
+  const componentName = flags.test ? `${args.name}-test` : args.name
   const nameSpace = flags.nameSpace || config.defaultNamespace
   const category = flags.category || 'Content'
   const customElementPath = flags.customElementPath || config.customElementPath
