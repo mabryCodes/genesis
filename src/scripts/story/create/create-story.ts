@@ -35,7 +35,7 @@ export const createStory = (args: any, flags: any): void => {
   const componentName = flags.test ? `${args.name}-test` : args.name
   const nameSpace = flags.nameSpace || config.defaultNamespace
   const category = flags.category || 'Content'
-  const customElementPath = flags.customElementPath || config.customElementPath
+  const customElementPath = flags.customElementsPath || config.customElementPath
   const fullBleed = flags.fullBleed
   const currDir = process.cwd()
   const resolvedPath = path.resolve(currDir, customElementPath)
