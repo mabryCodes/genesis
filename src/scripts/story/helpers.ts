@@ -108,7 +108,8 @@ export const replaceArgs = (data: any, storyPath: string) => {
  */
 export const replaceArgTypes = (data: any, storyPath: string):void => {
   const marker = '// ARGTYPES'
-  const argtypes = argsTypeTemplate(data.attributes, data.slots, data.cssVars)
+  console.log(data)
+  const argtypes = argsTypeTemplate(data.attributes, data.slots, data.cssProperties)
   // const content = getContentBetween(marker, marker, template)
 
   replace({

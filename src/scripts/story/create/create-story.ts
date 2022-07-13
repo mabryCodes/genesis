@@ -39,7 +39,6 @@ export const createStory = (args: any, flags: any): void => {
   const fullBleed = flags.fullBleed
   const currDir = process.cwd()
   const resolvedPath = path.resolve(currDir, customElementPath)
-  console.log(resolvedPath)
 
   const output = flags.output || `src/components/${nameSpace}/${componentName}/generated-${componentName}.stories.ts`
 
