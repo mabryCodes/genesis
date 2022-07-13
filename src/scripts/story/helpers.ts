@@ -4,8 +4,9 @@ import {
   argsTemplate,
   argsTypeTemplate,
   attributesTemplate,
+  docsAttributeTemplate,
   slotContentTemplate,
-} from '../../templates/story/helpers'
+} from '../../templates/story/partials'
 import {kebabCaseToLowerCamelCase, kebabCaseToTitleCase, kebabCaseToTitleSpaceCase} from '../../utility/utility'
 
 /**
@@ -21,13 +22,15 @@ export const replaceImports = (data: any, storyPath: any): void => {
 
   if (data.slots) imports.push("import { unsafeHTML } from 'lit/directives/unsafe-html.js'")
 
-  replace({
-    regex: marker,
-    replacement: imports.join('\n'),
-    paths: [storyPath],
-    recursive: false,
-    silent: true,
-  })
+  if (imports.length > 0) {
+    replace({
+      regex: marker,
+      replacement: imports.join('\n'),
+      paths: [storyPath],
+      recursive: false,
+      silent: true,
+    })
+  }
 }
 
 /**
@@ -129,18 +132,33 @@ export const replaceParameters = (params: any, storyPath: any): void => {
 
   if (params.fullBleed) parameters.push("\t\t\tlayout: 'centered'")
 
+  if (parameters.length > 0) {
+    replace({
+      regex: marker,
+      replacement: parameters.join(''),
+      paths: [storyPath],
+      recursive: false,
+      silent: true,
+    })
+  }
+}
+
+export const replaceAttributes = (data: any, storyPath: string) => {
+  const marker = '// ATTRIBUTES'
+  const attributes = attributesTemplate(data.attributes)
+
   replace({
     regex: marker,
-    replacement: parameters.join(''),
+    replacement: attributes,
     paths: [storyPath],
     recursive: false,
     silent: true,
   })
 }
 
-export const replaceAttributes = (data: any, storyPath: string) => {
-  const marker = '// ATTRIBUTES'
-  const attributes = attributesTemplate(data.attributes)
+export const replaceDocAttributes = (data: any, storyPath: string) => {
+  const marker = '// DOCATTRIBUTES'
+  const attributes = docsAttributeTemplate(data.attributes)
 
   replace({
     regex: marker,

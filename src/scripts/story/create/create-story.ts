@@ -10,9 +10,13 @@ import {
   replaceArgTypes,
   replaceArgs,
   replaceAttributes,
+  replaceDocAttributes,
   replaceSlotContent,
   replaceParameters,
 } from '../helpers'
+
+// import {Program} from 'typescript'
+// import { analyzeSourceFile } from "web-component-analyzer";
 
 const config = {
   customElementPath: 'test/mock-app/src/custom-element.json',
@@ -35,8 +39,12 @@ export const createStory = (args: any, flags: any): void => {
   const fullBleed = flags.fullBleed
   const currDir = process.cwd()
   const resolvedPath = path.resolve(currDir, customElementPath)
+  console.log(resolvedPath)
+
   const output = flags.output || `src/components/${nameSpace}/${componentName}/generated-${componentName}.stories.ts`
 
+  // const checker = new Program()
+  // const result = analyzeSourceFile(resolvedPath, checker)
   // import custom element json file
   import(`${resolvedPath}`)
   .then((customElements: any) => {
@@ -56,6 +64,7 @@ export const createStory = (args: any, flags: any): void => {
     replaceArgTypes(componentData, output)
     replaceArgs(componentData, output)
     replaceParameters({fullBleed}, output)
+    replaceDocAttributes(componentData, output)
     replaceAttributes(componentData, output)
     replaceSlotContent(componentData, output)
   })

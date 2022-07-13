@@ -66,7 +66,7 @@
     "story:create": "./bin/dev story",
     "story:create:test": "./bin/dev story:create outline-alert -o test/mock-app/src/components/outline-alert/test.stories.ts",
     "story:update": "./bin/dev story",
-    "story:update:test": "./bin/dev story:update outline-alert -o test/mock-app/src/components/outline-alert/update-test.stories.ts -s test/mock-app/src/components/outline-alert/test.stories.ts",
+    "story:update:test": "./bin/dev story:update outline-alert -o test/mock-app/src/components/outline-alert/update-test.stories.ts -s test/mock-app/src/components/outline-alert/test.stories.ts -p test/mock-app/src/updated-custom-element.json",
     "component:create": "./bin/dev component",
     "component:create:test": "./bin/dev component outline-egg"
   },

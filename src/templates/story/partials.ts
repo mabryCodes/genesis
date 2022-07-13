@@ -4,7 +4,18 @@ export const attributesTemplate = (attrs: any[]): string => {
   return attrs.map((a: any) => attrTemplate(a)).join('')
 }
 
-export const attrTemplate = (attr: any): string => {
+export const docsAttributeTemplate = (attrs: any[]): string => {
+  return attrs.map((a: any) => docsAttrTemplate(a)).join('')
+}
+
+const docsAttrTemplate = (attr: any): string => {
+  const attribute = camelCaseToKebabCase(attr.name)
+
+  return `
+  ${attribute}=${attr.default}`
+}
+
+const attrTemplate = (attr: any): string => {
   let attribute = camelCaseToKebabCase(attr.name)
 
   // sets any data-binding specific syntax
@@ -19,18 +30,18 @@ export const attrTemplate = (attr: any): string => {
   return `${attribute}=\${args.${kebabCaseToLowerCamelCase(attr.name)}}\r\t\t\t`
 }
 
-export const slotRenderTemplate = (slot: any): string => {
+const slotRenderTemplate = (slot: any): string => {
   const slotName = kebabCaseToLowerCamelCase(slot.name)
   return slot.name === 'default' ?
     `\t\${unsafeHTML(args.${slotName}Slot ?? '')}\r`  :
     `\t\t\t<div slot="${slot.name}">\${unsafeHTML(args.${slotName}Slot ?? '')}</div>\r`
 }
 
-export const slotArgTemplate = (arg: any) => {
+const slotArgTemplate = (arg: any) => {
   return `${kebabCaseToLowerCamelCase(arg.name)}Slot: \`Enter slot content here\`,\r\t\t`
 }
 
-export const slotArgsTypeTemplate = (arg: any) => {
+const slotArgsTypeTemplate = (arg: any) => {
   return `
     ${kebabCaseToLowerCamelCase(arg.name)}Slot: {
       control: 'text',
@@ -40,7 +51,7 @@ export const slotArgsTypeTemplate = (arg: any) => {
 }
 
 // @todo add ability to collapse the css vars table by default if possible
-export const cssVarArgsTypeTemplate = (arg: any) => {
+const cssVarArgsTypeTemplate = (arg: any) => {
   return `
     ${cssVarCaseToLowerCamelCase(arg.name)}: {
       name: '${arg.name}',
@@ -49,12 +60,12 @@ export const cssVarArgsTypeTemplate = (arg: any) => {
     },`
 }
 
-export const argTemplate = (arg: { name: string; default: any }): string => {
+const argTemplate = (arg: { name: string; default: any }): string => {
   return `
     ${kebabCaseToLowerCamelCase(arg.name)}: ${arg.default || 'undefined'},`
 }
 
-export const argTypeTemplatePartial = (arg: {
+const argTypeTemplatePartial = (arg: {
   name: string;
   type: any;
   description: any;

@@ -17,7 +17,7 @@ const configuration = {
       source: {
         code: \`
 <component-name
-  /// -ATTRIBUTES - need to fix or add docs attribute specific replace function
+  // DOCATTRIBUTES
 >
 </component-name>
         \`,
