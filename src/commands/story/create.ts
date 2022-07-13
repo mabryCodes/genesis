@@ -1,5 +1,5 @@
 import {Command, Flags} from '@oclif/core'
-import {createStory} from '../../scripts/story/create-story'
+import {createStory} from '../../scripts/story/create/create-story'
 
 export default class StoryCreate extends Command {
   static description = 'Generates a Storybook story using the custom-elements.json file.'

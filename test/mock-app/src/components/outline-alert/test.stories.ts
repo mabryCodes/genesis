@@ -1,6 +1,6 @@
-import { html, TemplateResult } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'
-import './outline-alert';
+// import { html, TemplateResult } from 'lit';
+// import { unsafeHTML } from 'lit/directives/unsafe-html.js'
+// import './outline-alert';
 
 const configuration = {
   title: "Content/Outline Alert",
@@ -103,41 +103,41 @@ const configuration = {
 
 export default configuration;
 
-const Template = (args = configuration.args): TemplateResult => {
-  args = {
-    ...configuration.args,
-    ...args,
-  };
+// const Template = (args = configuration.args): TemplateResult => {
+//   args = {
+//     ...configuration.args,
+//     ...args,
+//   };
   
-  return html`
-      <outline-alert
-      status-type=${args.statusType}
-			size=${args.size}
-			?isInteractive=${args.isInteractive}
-			?shouldShowIcon=${args.shouldShowIcon}
+//   return html`
+//       <outline-alert
+//       status-type=${args.statusType}
+// 			size=${args.size}
+// 			?isInteractive=${args.isInteractive}
+// 			?shouldShowIcon=${args.shouldShowIcon}
 			
-      >
-      	${unsafeHTML(args.defaultSlot ?? '')}
-			<div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
-      </outline-alert>
-   `;
-}
+//       >
+//       	${unsafeHTML(args.defaultSlot ?? '')}
+// 			<div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
+//       </outline-alert>
+//    `;
+// }
 
-export const OutlineAlert = Template.bind({});
+// export const OutlineAlert = Template.bind({});
 
-export const OutlineAlertVariant = Template.bind({});
-OutlineAlertVariant.args = {
-  // overwrite args here for variant
-  // sampleArg: 'sample value',
-}
-OutlineAlertVariant.parameters = {
-  docs: {
-    source: {
-      code: `
-<outline-alert>
-// the code in the main config is used for all stories unless overwritten here
-</outline-alert>
-      `,
-    }
-  },   
-}
+// export const OutlineAlertVariant = Template.bind({});
+// OutlineAlertVariant.args = {
+//   // overwrite args here for variant
+//   // sampleArg: 'sample value',
+// }
+// OutlineAlertVariant.parameters = {
+//   docs: {
+//     source: {
+//       code: `
+// <outline-alert>
+// // the code in the main config is used for all stories unless overwritten here
+// </outline-alert>
+//       `,
+//     }
+//   },   
+// }
