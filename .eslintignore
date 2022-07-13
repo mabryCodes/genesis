@@ -1,2 +1,2 @@
 /dist
-/test/mock-app/
+/test/mock-app/**/*

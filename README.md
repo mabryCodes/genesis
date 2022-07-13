@@ -22,7 +22,7 @@ $ npm install -g @mabry/genesis
 $ genesis COMMAND
 running command...
 $ genesis (--version)
-@mabry/genesis/0.0.0 darwin-x64 node-v14.16.0
+@mabry/genesis/0.1.0 darwin-x64 node-v14.16.0
 $ genesis --help [COMMAND]
 USAGE
   $ genesis COMMAND
@@ -42,7 +42,8 @@ USAGE
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-1)
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-2)
 * [`genesis plugins update`](#genesis-plugins-update)
-* [`genesis story NAME`](#genesis-story-name)
+* [`genesis story create NAME`](#genesis-story-create-name)
+* [`genesis story update [FILE]`](#genesis-story-update-file)
 
 ## `genesis component NAME`
 
@@ -67,7 +68,7 @@ EXAMPLES
   $ genesis component
 ```
 
-_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.0.0/dist/commands/component.ts)_
+_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.1.0/dist/commands/component.ts)_
 
 ## `genesis help [COMMAND]`
 
@@ -319,13 +320,13 @@ DESCRIPTION
   Update installed plugins.
 ```
 
-## `genesis story NAME`
+## `genesis story create NAME`
 
 Generates a Storybook story using the custom-elements.json file.
 
 ```
 USAGE
-  $ genesis story [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-n <value>]
+  $ genesis story create [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-n <value>] [-t]
 
 ARGUMENTS
   NAME  name of component
@@ -336,13 +337,31 @@ FLAGS
   -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
   -o, --output=<value>              category for the story, defaults to the same path as the component
   -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
+  -t, --test                        create a test file for the component story
 
 DESCRIPTION
   Generates a Storybook story using the custom-elements.json file.
 
 EXAMPLES
-  $ genesis story
+  $ genesis story create
 ```
 
-_See code: [dist/commands/story.ts](https://github.com/mabryCodes/genesis/blob/v0.0.0/dist/commands/story.ts)_
+## `genesis story update [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ genesis story update [FILE] [-n <value>] [-f]
+
+FLAGS
+  -f, --force
+  -n, --name=<value>  name to print
+
+DESCRIPTION
+  describe the command here
+
+EXAMPLES
+  $ genesis story update
+```
 <!-- commandsstop -->

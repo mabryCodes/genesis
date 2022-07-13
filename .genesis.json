@@ -1,0 +1,13 @@
+{
+  "customElementsJson": "test/mock-app/src/custom-element.json",
+  "defaultNamespace": "genesis",
+  "story": {
+    "create": {
+    }
+  },
+  "component": {
+    "create": {
+      "defaultBaseClass": "OutlineElement"
+    }
+  }
+}

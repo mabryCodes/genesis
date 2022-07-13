@@ -1,7 +1,7 @@
 import {Command, Flags} from '@oclif/core'
-import {createStory} from '../scripts/story/generate-story'
+import {createStory} from '../../scripts/story/create/create-story'
 
-export default class GenerateStory extends Command {
+export default class StoryCreate extends Command {
   static description = 'Generates a Storybook story using the custom-elements.json file.'
 
   static examples = [
@@ -17,17 +17,11 @@ export default class GenerateStory extends Command {
     category: Flags.string({char: 'c', description: 'category for the story', default: 'Content'},
     ),
     nameSpace: Flags.string({char: 'n', description: 'name space for the component. defaults to the base name used for the component'}),
+    test: Flags.boolean({char: 't', description: 'create a test file for the component story'}),
   }
 
   public async run(): Promise<void> {
-    const {args, flags} = await this.parse(GenerateStory)
-    createStory(
-      args.name,
-      flags.output,
-      flags.nameSpace,
-      flags.category,
-      flags.customElementsPath,
-      flags.fullBleed,
-    )
+    const {args, flags} = await this.parse(StoryCreate)
+    createStory(args, flags)
   }
 }
