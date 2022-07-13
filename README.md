@@ -43,7 +43,7 @@ USAGE
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-2)
 * [`genesis plugins update`](#genesis-plugins-update)
 * [`genesis story create NAME`](#genesis-story-create-name)
-* [`genesis story update [FILE]`](#genesis-story-update-file)
+* [`genesis story update NAME`](#genesis-story-update-name)
 
 ## `genesis component NAME`
 
@@ -346,17 +346,27 @@ EXAMPLES
   $ genesis story create
 ```
 
-## `genesis story update [FILE]`
+## `genesis story update NAME`
 
 describe the command here
 
 ```
 USAGE
-  $ genesis story update [FILE] [-n <value>] [-f]
+  $ genesis story update [NAME] [-f] [-o <value>] [-p <value>] [-s <value>] [-c <value>] [-n <value>] [-t]
+
+ARGUMENTS
+  NAME  name of component
 
 FLAGS
-  -f, --force
-  -n, --name=<value>  name to print
+  -c, --category=<value>            [default: Content] category for the story
+  -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
+  -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
+  -o, --output=<value>              category for the story, defaults to the same path as the component
+  -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
+  -s, --storyPath=<value>           path to components story file.
+                                    overrides config setting
+                                    defaults to same folder as component
+  -t, --test                        create a test file for the component story
 
 DESCRIPTION
   describe the command here
