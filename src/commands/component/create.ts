@@ -1,5 +1,6 @@
 import {Command, Flags} from '@oclif/core'
 import {createComponent} from '../../scripts/component/create/create-component'
+// import { analyzeComponent } from '../../scripts/component/helpers'
 export default class ComponentCreate extends Command {
   static description = 'describe the command here'
 

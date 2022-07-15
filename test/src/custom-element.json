@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "outline-element",
-      "path": "./base/outline-element/outline-element.ts",
+      "path": "./test/src/outline-element/outline-element.ts",
       "properties": [
         {
           "name": "styles",

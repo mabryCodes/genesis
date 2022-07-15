@@ -1,6 +1,6 @@
 
 import { CSSResultGroup, TemplateResult, html } from 'lit';
-import { OutlineElement } from '/Users/jmabry/dev/outline/genesis-cli/base';
+import { OutlineElement } from '../../outline-element/outline-element.ts';
 import { customElement, property } from 'lit/decorators.js'
 import componentStyles from './test-component.css.lit';
 

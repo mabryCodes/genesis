@@ -1,4 +1,6 @@
+import { analyzeSourceFile, analyzeText, AnalyzeTextResult, transformAnalyzerResult } from "web-component-analyzer"
 import { kebabCaseToTitleCase, kebabCaseToTitleSpaceCase, kebabCaseToLowerCamelCase } from "../../utility/utility"
+const fs = require("fs")
 
 const replace = require('replace')
 
@@ -64,4 +66,11 @@ const replace = require('replace')
     recursive: false,
     silent: true,
   })
+}
+
+export const analyzeComponent = (componentPath: string): string => {
+  let fileStr = fs.readFileSync(componentPath, "utf8").toString();
+  let result: AnalyzeTextResult = analyzeText(fileStr);
+  let output = transformAnalyzerResult("json", result.results, result.program, {visibility: "private"});
+  return output
 }

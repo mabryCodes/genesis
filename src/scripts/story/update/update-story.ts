@@ -10,8 +10,8 @@ import {
   replaceArgs
 } from '../helpers'
 
-// import {Program} from 'typescript'
-// import { analyzeSourceFile } from "web-component-analyzer";
+import {Program} from 'typescript'
+import { analyzeSourceFile } from "web-component-analyzer";
 
 const config = {
   customElementPath: 'test/src/custom-element.json',
@@ -36,6 +36,7 @@ export const updateStory = (args: any, flags: any): void => {
 
   const configOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
 
+
   // import custom element json file
   import(`${resolvedPath}`)
   .then((customElements: any) => {
@@ -45,6 +46,8 @@ export const updateStory = (args: any, flags: any): void => {
     const componentData = customElements.tags.find(
       (tag: { name: any }) => tag.name === componentName,
     )
+
+    // const result = analyzeSourceFile(`${resolvedPath}/${componentName}.ts`)
 
     // create config file from template
     outputFileSync(configOutput, configTemplate)

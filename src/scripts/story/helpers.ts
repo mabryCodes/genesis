@@ -63,6 +63,7 @@ export const replaceParameters = (params: any, storyPath: any): void => {
 }
 
 export const replaceAttributes = (data: any, storyPath: string) => {
+  if(!data.attributes) return;
   const marker = '// <!-- ATTRIBUTES --->'
   const attributes = attributesTemplate(data.attributes)
 
@@ -76,6 +77,7 @@ export const replaceAttributes = (data: any, storyPath: string) => {
 }
 
 export const replaceDocAttributes = (data: any, storyPath: string) => {
+  if(!data.attributes) return;
   const marker = '// <!-- DOCS ATTRIBUTES --->'
   const attributes = docsAttributeTemplate(data.attributes)
 
@@ -89,6 +91,8 @@ export const replaceDocAttributes = (data: any, storyPath: string) => {
 }
 
 export const replaceSlotContent = (data: any, storyPath: string) => {
+  if(!data.slots) return;
+
   const marker = '// <!-- SLOT CONTENT --->'
   const attributes = slotContentTemplate(data.slots)
 
