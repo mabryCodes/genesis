@@ -130,7 +130,7 @@ export const replaceParameters = (params: any, storyPath: any): void => {
   const marker = '// PARAMETERS'
   const parameters: string[] = []
 
-  if (params.fullBleed) parameters.push("\t\t\tlayout: 'centered'")
+  if (params.fullBleed) parameters.push("\t\t\tlayout: 'fullscreen'")
 
   if (parameters.length > 0) {
     replace({
