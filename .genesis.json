@@ -1,5 +1,5 @@
 {
-  "customElementsJson": "test/mock-app/src/custom-element.json",
+  "customElementsJson": "test/src/custom-elements.json",
   "defaultNamespace": "genesis",
   "story": {
     "defaultImage": [{

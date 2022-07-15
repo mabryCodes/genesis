@@ -2,7 +2,11 @@
 // import { existsSync, outputFileSync, readFileSync } from 'fs-extra'
 import {outputFileSync} from 'fs-extra'
 import path = require('path')
-import storyTemplate = require('../../../templates/story/story-template');
+import storyIndexTemplate = require('../../../templates/story/index-template');
+import userConfigTemplate from '../../../templates/story/user-config-template';
+import configTemplate from '../../../templates/story/config-template';
+import variantTemplate from '../../../templates/story/variant-template';
+
 import {
   replaceImports,
   replaceComponentName,
@@ -19,7 +23,7 @@ import {
 // import { analyzeSourceFile } from "web-component-analyzer";
 
 const config = {
-  customElementPath: 'test/mock-app/src/custom-element.json',
+  customElementPath: 'test/src/custom-element.json',
   baseClass: 'OutlineElement',
   defaultNamespace: 'base',
 }
@@ -33,39 +37,46 @@ const config = {
  */
 export const createStory = (args: any, flags: any): void => {
   const componentName = flags.test ? `${args.name}-test` : args.name
+  // the namespace of the parent folder of the component src/{namespace}/{componentName}
   const nameSpace = flags.nameSpace || config.defaultNamespace
-  const category = flags.category || 'Content'
   const customElementPath = flags.customElementsPath || config.customElementPath
-  const fullBleed = flags.fullBleed
+  // const fullBleed = flags.fullBleed
   const currDir = process.cwd()
   const resolvedPath = path.resolve(currDir, customElementPath)
 
-  const output = flags.output || `src/components/${nameSpace}/${componentName}/generated-${componentName}.stories.ts`
+  const storyIndexOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/index.stories.ts`
+  const configOutput =   `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
+  const userConfigOutput = `${flags.output}/${nameSpace}/${componentName}/story/${componentName}.stories.ts`
+  const variantOutput = `${flags.output}/${nameSpace}/${componentName}/story/${componentName}.stories.ts`
 
-  // const checker = new Program()
-  // const result = analyzeSourceFile(resolvedPath, checker)
   // import custom element json file
   import(`${resolvedPath}`)
   .then((customElements: any) => {
-    console.log('Creating story for', componentName, 'at', output)
+    console.log('Creating story for', componentName, 'at', flags.output)
 
     // get custom element json data for component
     const componentData = customElements.tags.find(
       (tag: { name: any }) => tag.name === componentName,
     )
 
-    // create story file from template
-    outputFileSync(output, storyTemplate.default)
+    // create story index file from template
+    outputFileSync(storyIndexOutput, storyIndexTemplate.default)
+    // create user-config file from template
+    outputFileSync(userConfigOutput, userConfigTemplate.default)
+    // create config file from template
+    outputFileSync(configOutput, configTemplate.default)
+    // create variant file from template
+    outputFileSync(variantOutput, variantTemplate.default)
 
-    replaceImports(componentData, output)
-    replaceComponentName(componentName, output)
-    replaceCategory(category, output)
-    replaceArgTypes(componentData, output)
-    replaceArgs(componentData, output)
-    replaceParameters({fullBleed}, output)
-    replaceDocAttributes(componentData, output)
-    replaceAttributes(componentData, output)
-    replaceSlotContent(componentData, output)
+    // replaceImports(componentData, output)
+    // replaceComponentName(componentName, output)
+    // replaceCategory(category, output)
+    // replaceArgTypes(componentData, output)
+    // replaceArgs(componentData, output)
+    // replaceParameters({fullBleed}, output)
+    // replaceDocAttributes(componentData, output)
+    // replaceAttributes(componentData, output)
+    // replaceSlotContent(componentData, output)
   })
   .catch(error => {
     console.error(error)
