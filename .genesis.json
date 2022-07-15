@@ -2,12 +2,17 @@
   "customElementsJson": "test/mock-app/src/custom-element.json",
   "defaultNamespace": "genesis",
   "story": {
-    "create": {
-    }
+    "defaultImage": [{
+      "url": "https://www.genesis.com/wcsstore/GlobalAssets/images/product/placeholder/product-placeholder-500x500.jpg",
+      "width": 500,
+      "height": 500,
+      "className": "default-image"
+    }]
   },
   "component": {
     "create": {
       "defaultBaseClass": "OutlineElement"
     }
   }
+
 }
