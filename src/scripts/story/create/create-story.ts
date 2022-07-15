@@ -8,9 +8,7 @@ import configTemplate from '../../../templates/story/config-template';
 import variantTemplate from '../../../templates/story/variant-template';
 
 import {
-  replaceImports,
   replaceComponentName,
-  replaceCategory,
   replaceArgTypes,
   replaceArgs,
   replaceAttributes,
@@ -40,13 +38,13 @@ export const createStory = (args: any, flags: any): void => {
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
   const nameSpace = flags.nameSpace || config.defaultNamespace
   const customElementPath = flags.customElementsPath || config.customElementPath
-  // const fullBleed = flags.fullBleed
+  const fullBleed = flags.fullBleed
   const currDir = process.cwd()
   const resolvedPath = path.resolve(currDir, customElementPath)
 
   const storyIndexOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/index.stories.ts`
   const configOutput =   `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
-  const userConfigOutput = `${flags.output}/${nameSpace}/${componentName}/story/${componentName}.stories.ts`
+  const userConfigOutput = `${flags.output}/${nameSpace}/${componentName}/story/user-config.ts`
   const variantOutput = `${flags.output}/${nameSpace}/${componentName}/story/${componentName}.stories.ts`
 
   // import custom element json file
@@ -62,21 +60,28 @@ export const createStory = (args: any, flags: any): void => {
     // create story index file from template
     outputFileSync(storyIndexOutput, storyIndexTemplate.default)
     // create user-config file from template
-    outputFileSync(userConfigOutput, userConfigTemplate.default)
+    outputFileSync(userConfigOutput, userConfigTemplate)
     // create config file from template
-    outputFileSync(configOutput, configTemplate.default)
+    outputFileSync(configOutput, configTemplate)
     // create variant file from template
-    outputFileSync(variantOutput, variantTemplate.default)
+    outputFileSync(variantOutput, variantTemplate)
 
-    // replaceImports(componentData, output)
-    // replaceComponentName(componentName, output)
-    // replaceCategory(category, output)
-    // replaceArgTypes(componentData, output)
-    // replaceArgs(componentData, output)
-    // replaceParameters({fullBleed}, output)
-    // replaceDocAttributes(componentData, output)
-    // replaceAttributes(componentData, output)
-    // replaceSlotContent(componentData, output)
+    const outputPaths = [
+      storyIndexOutput,
+      configOutput,
+      userConfigOutput,
+      variantOutput,
+    ]
+
+    outputPaths.forEach((output: string) => {   
+      replaceComponentName(componentName, output)
+      replaceArgTypes(componentData, output)
+      replaceArgs(componentData, output)
+      replaceParameters({fullBleed}, output)
+      replaceDocAttributes(componentData, output)
+      replaceAttributes(componentData, output)
+      replaceSlotContent(componentData, output)
+    })
   })
   .catch(error => {
     console.error(error)

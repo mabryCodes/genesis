@@ -1,5 +1,4 @@
-export default `
-// ============================================================
+export default `// ============================================================
 // <!-- Auto generated file. DO NOT EDIT. -->
 // ============================================================
 import { html, TemplateResult } from 'lit';
@@ -8,7 +7,7 @@ import {userConfig} from '../user-config';
 import '../../component-name';
 
 const argTypes = {
-  <!-- ARGTYPES --->
+// <!-- ARGTYPES --->
 }
 
 userConfig.argTypes = {
@@ -30,7 +29,7 @@ export const Template = (
   
   return html\`
       <component-name
-        <!-- ATTRIBUTES --->
+      // <!-- ATTRIBUTES --->
       >
       \${unsafeHTML(args.story)}
     </component-name>
