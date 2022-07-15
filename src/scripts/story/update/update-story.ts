@@ -3,9 +3,8 @@
 import {outputFileSync} from 'fs-extra'
 import path = require('path')
 import configTemplate from '../../../templates/story/config-template';
-
+import {replaceComponentName} from '../../../utility/utility';
 import {
-  replaceComponentName,
   replaceArgTypes,
   replaceAttributes,
   replaceArgs

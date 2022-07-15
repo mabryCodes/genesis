@@ -6,52 +6,6 @@ import {
   docsAttributeTemplate,
   slotContentTemplate,
 } from '../../templates/story/partials'
-import {kebabCaseToLowerCamelCase, kebabCaseToTitleCase, kebabCaseToTitleSpaceCase} from '../../utility/utility'
-
-/**
- * Replaces all instances of the component name in the story template
- * @param componentName - component name
- * @param storyPath - path to story file
- * @returns void
- **/
-export const replaceComponentName = (componentName: string, storyPath: string): void => {
-  const nameTitleCase = kebabCaseToTitleCase(componentName)
-  const nameTitleSpaceCase = kebabCaseToTitleSpaceCase(componentName)
-  const nameCamelCase = kebabCaseToLowerCamelCase(componentName)
-
-  // @todo: use a loop to replace all instances of the component name?
-  replace({
-    regex: 'ComponentName',
-    replacement: nameTitleCase,
-    paths: [storyPath],
-    recursive: false,
-    silent: true,
-  })
-
-  replace({
-    regex: 'componentName',
-    replacement: nameCamelCase,
-    paths: [storyPath],
-    recursive: false,
-    silent: true,
-  })
-
-  replace({
-    regex: 'Component Name',
-    replacement: nameTitleSpaceCase,
-    paths: [storyPath],
-    recursive: false,
-    silent: true,
-  })
-
-  replace({
-    regex: 'component-name',
-    replacement: componentName,
-    paths: [storyPath],
-    recursive: false,
-    silent: true,
-  })
-}
 
 export const replaceArgs = (data: any, storyPath: string) => {
   const marker = '// <!-- ARGS --->'

@@ -6,9 +6,8 @@ import storyIndexTemplate = require('../../../templates/story/index-template');
 import userConfigTemplate from '../../../templates/story/user-config-template';
 import configTemplate from '../../../templates/story/config-template';
 import variantTemplate from '../../../templates/story/variant-template';
-
+import { replaceComponentName } from '../../../utility/utility';
 import {
-  replaceComponentName,
   replaceArgTypes,
   replaceArgs,
   replaceAttributes,

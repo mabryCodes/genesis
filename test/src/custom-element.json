@@ -2,6 +2,17 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "outline-element",
+      "path": "./base/outline-element/outline-element.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResultGroup",
+          "default": "[\"componentStyles\"]"
+        }
+      ]
+    },
+    {
       "name": "outline-alert",
       "path": "./components/base/outline-alert/outline-alert.ts",
       "description": "The Outline Alert component",
