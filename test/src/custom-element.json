@@ -7,6 +7,11 @@
       "description": "The Outline Alert component",
       "attributes": [
         {
+          "name": "priority",
+          "type": "\"1\" | \"2\" | \"3\" | \"4\"",
+          "default": "\"2\""
+        },
+        {
           "name": "statusType",
           "type": "\"info\" | \"warning\" | \"error\" | \"success\"",
           "default": "\"info\""

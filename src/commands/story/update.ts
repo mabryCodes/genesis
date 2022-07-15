@@ -30,7 +30,7 @@ export default class StoryUpdate extends Command {
 
     import(`${configPath}`)
     .then((config: any) => {
-      updateStory(args, flags, config, currDir)
+      updateStory(args, flags)
     })
     .catch(error => {
       console.error(error)

@@ -1,12 +1,27 @@
+// ============================================================
+// <!-- Auto generated file. DO NOT EDIT. -->
+// ============================================================
 import { html, TemplateResult } from 'lit';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js'
-import './outline-alert';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import {userConfig} from '../user-config';
+import '../../outline-alert';
 
-const configuration = {
-  title: "Content/Outline Alert",
-  component: 'outline-alert',
-  argTypes: {
-    statusType: {
+const argTypes = {
+priority: {
+      control: {
+        type: 'select',
+        options: ['1','2','3','4']
+      },
+      name: 'priority',
+      description: 'undefined',
+      table: { 
+        category: 'Properties', 
+        defaultValue: { 
+          summary: "2"
+        } 
+      },
+    },
+		statusType: {
       control: {
         type: 'select',
         options: ['info','warning','error','success']
@@ -19,7 +34,8 @@ const configuration = {
           summary: "info"
         } 
       },
-    },		size: {
+    },
+		size: {
       control: {
         type: 'select',
         options: ['small','large']
@@ -32,7 +48,8 @@ const configuration = {
           summary: "large"
         } 
       },
-    },		isInteractive: {
+    },
+		isInteractive: {
       control: {
         type: 'boolean'
       },
@@ -44,7 +61,8 @@ const configuration = {
           summary: false
         } 
       },
-    },		shouldShowIcon: {
+    },
+		shouldShowIcon: {
       control: {
         type: 'boolean'
       },
@@ -56,7 +74,8 @@ const configuration = {
           summary: true
         } 
       },
-    },		
+    },
+		
     
     defaultSlot: {
       control: 'text',
@@ -130,67 +149,53 @@ const configuration = {
       table: { category: 'CSS Variables' }
     },
   
-  },
-  args: {
-    
+}
+
+const args = {
+
+    priority: "2",
     statusType: "info",
     size: "large",
     isInteractive: false,
     shouldShowIcon: true, 
-  defaultSlot: `Enter slot content here`,		headerSlot: `Enter slot content here`,		
+  defaultSlot: `Enter slot content here`,
+		headerSlot: `Enter slot content here`,
+		
   
-  },
-  parameters: {
-    // PARAMETERS
-    docs: {
-      source: {
-        code: `
-<outline-alert
-  
-  status-type="info"
-  size="large"
-  is-interactive=false
-  should-show-icon=true
->
-</outline-alert>
-        `,
-      }
-    },   
-  },
-};
+}
 
-export default configuration;
+userConfig.argTypes = {
+  ...argTypes,
+  ...userConfig.argTypes,
+}
 
-const Template = (args = configuration.args): TemplateResult => {
+userConfig.args = {
+  ...args,
+  ...userConfig.args,
+}
+
+const config = userConfig;
+
+export default config;
+
+export const Template = (
+  args = config.args, 
+): TemplateResult => {
   args = {
-    ...configuration.args,
+    ...config.args,
     ...args,
   };
   
   return html`
       <outline-alert
-      status-type=${args.statusType}			size=${args.size}			?isInteractive=${args.isInteractive}			?shouldShowIcon=${args.shouldShowIcon}			
+      priority=${args.priority}
+			status-type=${args.statusType}
+			size=${args.size}
+			?isInteractive=${args.isInteractive}
+			?shouldShowIcon=${args.shouldShowIcon}
+			
       >
-      	${unsafeHTML(args.defaultSlot ?? '')}			<div slot="header">${unsafeHTML(args.headerSlot ?? '')}</div>
-      </outline-alert>
-   `;
-}
-
-export const OutlineAlert = Template.bind({});
-
-export const OutlineAlertVariant = Template.bind({});
-OutlineAlertVariant.args = {
-  // overwrite args here for variant
-  // sampleArg: 'sample value',
-}
-OutlineAlertVariant.parameters = {
-  docs: {
-    source: {
-      code: `
-<outline-alert>
-// the code in the main config is used for all stories unless overwritten here
-</outline-alert>
-      `,
-    }
-  },   
+      ${unsafeHTML(args.story)}
+    </outline-alert>
+    `;
 }

@@ -31,10 +31,9 @@ const attrTemplate = (attr: any): string => {
 }
 
 const slotRenderTemplate = (slot: any): string => {
-  const slotName = kebabCaseToLowerCamelCase(slot.name)
   return slot.name === 'default' ?
-    `\t\${unsafeHTML(args.${slotName}Slot ?? '')}\r`  :
-    `\t\t\t<div slot="${slot.name}">\${unsafeHTML(args.${slotName}Slot ?? '')}</div>\r`
+    `\t<p>Default Slot Content</p>\r`  :
+    `\t\t\t<p slot="${slot.name}">${slot.name} slot content</p>\r`
 }
 
 const slotArgTemplate = (arg: any) => {
