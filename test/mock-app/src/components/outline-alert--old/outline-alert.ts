@@ -13,7 +13,6 @@ export const alertStatusTypes = [
   'warning',
   'error',
   'success',
-  'none',
 ] as const;
 export type AlertStatusType = typeof alertStatusTypes[number];
 
@@ -32,7 +31,7 @@ export interface OutlineAlertInterface extends HTMLElement {
  * @extends OutlineElement
  * @slot default - The alert contents.
  * @slot header - The header in the alert.
- * @cssprop --outline-alert-info-background - The background color for the info alert.
+ * @cssprop --outline-alert-info-background The background color for the info alert.
  * @cssprop --outline-alert-info-text - The text color for the info alert.
  * @cssprop --outline-alert-info-border - The border color for the info alert.
  * @cssprop --outline-alert-success-background - The background color for the success alert.
@@ -53,19 +52,19 @@ export class OutlineAlert
 {
   static styles: CSSResultGroup = [componentVars, componentStyles];
 
-  @property({ type: String, attribute: 'status-type' })
+  @property({ type: String })
   statusType: AlertStatusType = 'info';
 
   /**
    * This is important context for screen readers.
    */
-  @property({ type: Boolean, attribute: 'is-interactive' })
+  @property({ type: Boolean })
   isInteractive = false;
 
-  @property({ type: Boolean, attribute: 'should-show-icon' })
+  @property({ type: Boolean })
   shouldShowIcon = true;
 
-  @property({ type: String, attribute: 'size' })
+  @property({ type: String })
   size: AlertSize = 'large';
 
   render(): TemplateResult {
