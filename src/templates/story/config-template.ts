@@ -10,9 +10,18 @@ const argTypes = {
 // <!-- ARGTYPES --->
 }
 
+const args = {
+// <!-- ARGS --->
+}
+
 userConfig.argTypes = {
   ...argTypes,
   ...userConfig.argTypes,
+}
+
+userConfig.args = {
+  ...args,
+  ...userConfig.args,
 }
 
 const config = userConfig;

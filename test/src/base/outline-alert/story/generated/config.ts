@@ -7,7 +7,21 @@ import {userConfig} from '../user-config';
 import '../../outline-alert';
 
 const argTypes = {
-statusType: {
+priority: {
+      control: {
+        type: 'select',
+        options: ['1','2','3','4']
+      },
+      name: 'priority',
+      description: 'undefined',
+      table: { 
+        category: 'Properties', 
+        defaultValue: { 
+          summary: "2"
+        } 
+      },
+    },
+		statusType: {
       control: {
         type: 'select',
         options: ['info','warning','error','success']
@@ -20,7 +34,8 @@ statusType: {
           summary: "info"
         } 
       },
-    },		size: {
+    },
+		size: {
       control: {
         type: 'select',
         options: ['small','large']
@@ -33,7 +48,8 @@ statusType: {
           summary: "large"
         } 
       },
-    },		isInteractive: {
+    },
+		isInteractive: {
       control: {
         type: 'boolean'
       },
@@ -45,7 +61,8 @@ statusType: {
           summary: false
         } 
       },
-    },		shouldShowIcon: {
+    },
+		shouldShowIcon: {
       control: {
         type: 'boolean'
       },
@@ -57,7 +74,8 @@ statusType: {
           summary: true
         } 
       },
-    },		
+    },
+		
     
     defaultSlot: {
       control: 'text',
@@ -133,9 +151,27 @@ statusType: {
   
 }
 
+const args = {
+
+    priority: "2",
+    statusType: "info",
+    size: "large",
+    isInteractive: false,
+    shouldShowIcon: true, 
+  defaultSlot: `Enter slot content here`,
+		headerSlot: `Enter slot content here`,
+		
+  
+}
+
 userConfig.argTypes = {
   ...argTypes,
   ...userConfig.argTypes,
+}
+
+userConfig.args = {
+  ...args,
+  ...userConfig.args,
 }
 
 const config = userConfig;
@@ -152,7 +188,12 @@ export const Template = (
   
   return html`
       <outline-alert
-      status-type=${args.statusType}			size=${args.size}			?isInteractive=${args.isInteractive}			?shouldShowIcon=${args.shouldShowIcon}			
+      priority=${args.priority}
+			status-type=${args.statusType}
+			size=${args.size}
+			?isInteractive=${args.isInteractive}
+			?shouldShowIcon=${args.shouldShowIcon}
+			
       >
       ${unsafeHTML(args.story)}
     </outline-alert>
