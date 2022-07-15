@@ -1,4 +1,3 @@
-// eslint-disable-next-line unicorn/prefer-module
 const replace = require('replace')
 import {
   argsTemplate,
@@ -8,30 +7,6 @@ import {
   slotContentTemplate,
 } from '../../templates/story/partials'
 import {kebabCaseToLowerCamelCase, kebabCaseToTitleCase, kebabCaseToTitleSpaceCase} from '../../utility/utility'
-
-/**
- * Conditionally adds imports to the story file
- * @param data - custom element json component data
- * @param storyPath - path to story file
- * @returns void
- */
-export const replaceImports = (data: any, storyPath: any): void => {
-  const marker = '// IMPORTS'
-  // const content = getContentBetween(marker, marker, template)
-  const imports: string[] = []
-
-  if (data.slots) imports.push("import { unsafeHTML } from 'lit/directives/unsafe-html.js'")
-
-  if (imports.length > 0) {
-    replace({
-      regex: marker,
-      replacement: imports.join('\n'),
-      paths: [storyPath],
-      recursive: false,
-      silent: true,
-    })
-  }
-}
 
 /**
  * Replaces all instances of the component name in the story template
@@ -78,18 +53,8 @@ export const replaceComponentName = (componentName: string, storyPath: string): 
   })
 }
 
-export const replaceCategory = (category: string, storyPath: string) => {
-  replace({
-    regex: 'Category',
-    replacement: category,
-    paths: [storyPath],
-    recursive: false,
-    silent: true,
-  })
-}
-
 export const replaceArgs = (data: any, storyPath: string) => {
-  const marker = '// ARGS'
+  const marker = '// <!-- ARGS --->'
   const args = argsTemplate(data.attributes, data.slots)
   replace({
     regex: marker,
@@ -107,8 +72,8 @@ export const replaceArgs = (data: any, storyPath: string) => {
  * @returns void
  */
 export const replaceArgTypes = (data: any, storyPath: string):void => {
-  const marker = '// ARGTYPES'
-  const argtypes = argsTypeTemplate(data.attributes, data.slots, data.cssVars)
+  const marker = '// <!-- ARGTYPES --->'
+  const argtypes = argsTypeTemplate(data.attributes, data.slots, data.cssProperties)
   // const content = getContentBetween(marker, marker, template)
 
   replace({
@@ -127,10 +92,10 @@ export const replaceArgTypes = (data: any, storyPath: string):void => {
  * @returns void
  */
 export const replaceParameters = (params: any, storyPath: any): void => {
-  const marker = '// PARAMETERS'
+  const marker = '// <!-- PARAMETERS --->'
   const parameters: string[] = []
 
-  if (params.fullBleed) parameters.push("\t\t\tlayout: 'centered'")
+  if (params.fullBleed) parameters.push("\t\t\tlayout: 'fullscreen'")
 
   if (parameters.length > 0) {
     replace({
@@ -144,7 +109,7 @@ export const replaceParameters = (params: any, storyPath: any): void => {
 }
 
 export const replaceAttributes = (data: any, storyPath: string) => {
-  const marker = '// ATTRIBUTES'
+  const marker = '// <!-- ATTRIBUTES --->'
   const attributes = attributesTemplate(data.attributes)
 
   replace({
@@ -157,7 +122,7 @@ export const replaceAttributes = (data: any, storyPath: string) => {
 }
 
 export const replaceDocAttributes = (data: any, storyPath: string) => {
-  const marker = '// DOCATTRIBUTES'
+  const marker = '// <!-- DOCS ATTRIBUTES --->'
   const attributes = docsAttributeTemplate(data.attributes)
 
   replace({
@@ -170,7 +135,7 @@ export const replaceDocAttributes = (data: any, storyPath: string) => {
 }
 
 export const replaceSlotContent = (data: any, storyPath: string) => {
-  const marker = '// SLOTCONTENT'
+  const marker = '// <!-- SLOT CONTENT --->'
   const attributes = slotContentTemplate(data.slots)
 
   replace({
