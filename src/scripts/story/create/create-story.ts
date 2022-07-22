@@ -1,10 +1,10 @@
 import {outputFileSync, readFileSync} from 'fs-extra'
 import path = require('path')
 import storyIndexTemplate = require('../../../templates/story/index-template');
-import userConfigTemplate from '../../../templates/story/user-config-template';
-import configTemplate from '../../../templates/story/config-template';
-import variantTemplate from '../../../templates/story/variant-template';
-import { replaceComponentName } from '../../../utility/utility';
+import userConfigTemplate from '../../../templates/story/user-config-template'
+import configTemplate from '../../../templates/story/config-template'
+import variantTemplate from '../../../templates/story/variant-template'
+import {replaceComponentName} from '../../../utility/utility'
 import {
   replaceArgTypes,
   replaceArgs,
@@ -22,40 +22,39 @@ export const createStoryFromJson = (json: string, output: string, componentName:
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
 
   const storyIndexOutput = `${path.dirname(output)}/story/generated/index.stories.ts`
-  const configOutput =   `${path.dirname(output)}/story/generated/config.ts`  
+  const configOutput =   `${path.dirname(output)}/story/generated/config.ts`
   const userConfigOutput = `${path.dirname(output)}/story/user-config.ts`
   const variantOutput = `${path.dirname(output)}/story/${componentName}.stories.ts`
 
-    // console.log('Creating story for', componentName, 'at', output)
-    // console.log(storyIndexOutput)
+  // console.log('Creating story for', componentName, 'at', output)
+  // console.log(storyIndexOutput)
 
-  
-    // create story index file from template
-    outputFileSync(storyIndexOutput, storyIndexTemplate.default)
-    // create user-config file from template
-    outputFileSync(userConfigOutput, userConfigTemplate)
-    // create config file from template
-    outputFileSync(configOutput, configTemplate)
-    // create variant file from template
-    outputFileSync(variantOutput, variantTemplate)
+  // create story index file from template
+  outputFileSync(storyIndexOutput, storyIndexTemplate.default)
+  // create user-config file from template
+  outputFileSync(userConfigOutput, userConfigTemplate)
+  // create config file from template
+  outputFileSync(configOutput, configTemplate)
+  // create variant file from template
+  outputFileSync(variantOutput, variantTemplate)
 
-    const outputPaths = [
-      storyIndexOutput,
-      configOutput,
-      userConfigOutput,
-      variantOutput,
-    ]
-    
-    const componentData = JSON.parse(json)
-    outputPaths.forEach((output: string) => {   
-      replaceComponentName(componentName, output)
-      replaceArgTypes(componentData, output)
-      replaceArgs(componentData, output)
-      replaceParameters({}, output)
-      replaceDocAttributes(componentData, output)
-      replaceAttributes(componentData, output)
-      replaceSlotContent(componentData, output)
-    })
+  const outputPaths = [
+    storyIndexOutput,
+    configOutput,
+    userConfigOutput,
+    variantOutput,
+  ]
+
+  const componentData = JSON.parse(json)
+  outputPaths.forEach((output: string) => {
+    replaceComponentName(componentName, output)
+    replaceArgTypes(componentData, output)
+    replaceArgs(componentData, output)
+    replaceParameters({}, output)
+    replaceDocAttributes(componentData, output)
+    replaceAttributes(componentData, output)
+    replaceSlotContent(componentData, output)
+  })
 }
 
 /**
@@ -77,7 +76,7 @@ export const createStory = (args: any, flags: any): void => {
   const resolvedPath = path.resolve(currDir, customElementPath)
 
   const storyIndexOutput = `${flags.output}/${directory}/${componentName}/story/generated/index.stories.ts`
-  const configOutput =   `${flags.output}/${directory}/${componentName}/story/generated/config.ts`  
+  const configOutput =   `${flags.output}/${directory}/${componentName}/story/generated/config.ts`
   const userConfigOutput = `${flags.output}/${directory}/${componentName}/story/user-config.ts`
   const variantOutput = `${flags.output}/${directory}/${componentName}/story/${componentName}.stories.ts`
 
@@ -107,7 +106,7 @@ export const createStory = (args: any, flags: any): void => {
       variantOutput,
     ]
 
-    outputPaths.forEach((output: string) => {   
+    outputPaths.forEach((output: string) => {
       replaceComponentName(componentName, output)
       replaceArgTypes(componentData, output)
       replaceArgs(componentData, output)

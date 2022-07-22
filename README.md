@@ -31,7 +31,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`genesis component create NAME`](#genesis-component-create-name)
 * [`genesis help [COMMAND]`](#genesis-help-command)
+* [`genesis init`](#genesis-init)
 * [`genesis plugins`](#genesis-plugins)
 * [`genesis plugins:install PLUGIN...`](#genesis-pluginsinstall-plugin)
 * [`genesis plugins:inspect PLUGIN...`](#genesis-pluginsinspect-plugin)
@@ -41,6 +43,33 @@ USAGE
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-1)
 * [`genesis plugins:uninstall PLUGIN...`](#genesis-pluginsuninstall-plugin-2)
 * [`genesis plugins update`](#genesis-plugins-update)
+* [`genesis story create NAME`](#genesis-story-create-name)
+* [`genesis story update NAME`](#genesis-story-update-name)
+
+## `genesis component create NAME`
+
+describe the command here
+
+```
+USAGE
+  $ genesis component create [NAME] [-o <value>] [-p <value>] [-b <value>] [-d <value>] [-t]
+
+ARGUMENTS
+  NAME  name of component
+
+FLAGS
+  -b, --baseClass=<value>  name of base class
+  -d, --directory=<value>  directory for the component. defaults to the base name used for the component
+  -o, --output=<value>     category for the story, defaults to the same path as the component
+  -p, --path=<value>       path to custom-elements.json
+  -t, --test               create a test file for the component
+
+DESCRIPTION
+  describe the command here
+
+EXAMPLES
+  $ genesis component create
+```
 
 ## `genesis help [COMMAND]`
 
@@ -61,6 +90,23 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
+
+## `genesis init`
+
+Initializes a config file at the root of the current directory
+
+```
+USAGE
+  $ genesis init
+
+DESCRIPTION
+  Initializes a config file at the root of the current directory
+
+EXAMPLES
+  $ genesis init
+```
+
+_See code: [dist/commands/init.ts](https://github.com/mabryCodes/genesis/blob/v0.3.2/dist/commands/init.ts)_
 
 ## `genesis plugins`
 
@@ -290,5 +336,62 @@ FLAGS
 
 DESCRIPTION
   Update installed plugins.
+```
+
+## `genesis story create NAME`
+
+Generates a Storybook story using the custom-elements.json file.
+
+```
+USAGE
+  $ genesis story create [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-d <value>] [-t]
+
+ARGUMENTS
+  NAME  name of component
+
+FLAGS
+  -c, --category=<value>            [default: Content] category for the story
+  -d, --defaultDirectory=<value>    The default directory of the components. defaults to the base name used for the
+                                    component
+  -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
+  -o, --output=<value>              category for the story, defaults to the same path as the component
+  -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
+  -t, --test                        create a test file for the component story
+
+DESCRIPTION
+  Generates a Storybook story using the custom-elements.json file.
+
+EXAMPLES
+  $ genesis story create
+```
+
+## `genesis story update NAME`
+
+describe the command here
+
+```
+USAGE
+  $ genesis story update [NAME] [-f] [-o <value>] [-p <value>] [-s <value>] [-c <value>] [-d <value>] [-t]
+
+ARGUMENTS
+  NAME  name of component
+
+FLAGS
+  -c, --category=<value>            [default: Content] category for the story
+  -d, --defaultDirectory=<value>    Default directory for the component. defaults to the base name used for the
+                                    component
+  -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
+  -o, --output=<value>              category for the story, defaults to the same path as the component
+  -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
+  -s, --storyPath=<value>           path to components story file.
+                                    overrides config setting
+                                    defaults to same folder as component
+  -t, --test                        create a test file for the component story
+
+DESCRIPTION
+  describe the command here
+
+EXAMPLES
+  $ genesis story update
 ```
 <!-- commandsstop -->
