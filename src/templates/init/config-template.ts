@@ -1,5 +1,6 @@
-{
-  "customElementsPath": "test/custom-elements.json",
+export default `{
+  "customElementsPath": "src/custom-elements.json",
+  "defaultDirectory": "genesis",
   "story": {
     "defaultImage": [{
       "url": "https://via.placeholder.com/500",
@@ -14,3 +15,4 @@
     }
   }
 }
+`
