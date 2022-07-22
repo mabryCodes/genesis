@@ -1,5 +1,5 @@
 {
-  "customElementsPath": "test/src/custom-elements.json",
+  "customElementsPath": "test/custom-elements.json",
   "story": {
     "defaultImage": [{
       "url": "https://via.placeholder.com/500",
