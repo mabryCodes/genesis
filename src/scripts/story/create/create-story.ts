@@ -28,16 +28,15 @@ export const createStory = (args: any, flags: any): void => {
   const componentName = flags.test ? `${args.name}-test` : args.name
   const configPath = path.resolve(currDir, './.genesis.json')
   const config = JSON.parse(readFileSync(configPath, 'utf8'))
-  // the namespace of the parent folder of the component src/{namespace}/{componentName}
-  const nameSpace = flags.defaultDirectory || config.defaultDirectory
+  const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
   const customElementPath = flags.customElementsPath || config.customElementsPath
   const fullBleed = flags.fullBleed
   const resolvedPath = path.resolve(currDir, customElementPath)
 
-  const storyIndexOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/index.stories.ts`
-  const configOutput =   `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
-  const userConfigOutput = `${flags.output}/${nameSpace}/${componentName}/story/user-config.ts`
-  const variantOutput = `${flags.output}/${nameSpace}/${componentName}/story/${componentName}.stories.ts`
+  const storyIndexOutput = `${flags.output}/${directory}/${componentName}/story/generated/index.stories.ts`
+  const configOutput =   `${flags.output}/${directory}/${componentName}/story/generated/config.ts`  
+  const userConfigOutput = `${flags.output}/${directory}/${componentName}/story/user-config.ts`
+  const variantOutput = `${flags.output}/${directory}/${componentName}/story/${componentName}.stories.ts`
 
   // import custom element json file
   import(`${resolvedPath}`)

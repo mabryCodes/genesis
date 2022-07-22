@@ -20,8 +20,7 @@ priority: {
           summary: "2"
         } 
       },
-    },
-		statusType: {
+    },		statusType: {
       control: {
         type: 'select',
         options: ['info','warning','error','success']
@@ -34,8 +33,7 @@ priority: {
           summary: "info"
         } 
       },
-    },
-		size: {
+    },		size: {
       control: {
         type: 'select',
         options: ['small','large']
@@ -48,8 +46,7 @@ priority: {
           summary: "large"
         } 
       },
-    },
-		isInteractive: {
+    },		isInteractive: {
       control: {
         type: 'boolean'
       },
@@ -61,8 +58,19 @@ priority: {
           summary: false
         } 
       },
-    },
-		shouldShowIcon: {
+    },		testAlertProperty: {
+      control: {
+        type: 'boolean'
+      },
+      name: 'test-alert-property',
+      description: 'This is important context for screen readers.',
+      table: { 
+        category: 'Properties', 
+        defaultValue: { 
+          summary: false
+        } 
+      },
+    },		shouldShowIcon: {
       control: {
         type: 'boolean'
       },
@@ -74,8 +82,7 @@ priority: {
           summary: true
         } 
       },
-    },
-		
+    },		
     
     defaultSlot: {
       control: 'text',
@@ -157,10 +164,9 @@ const args = {
     statusType: "info",
     size: "large",
     isInteractive: false,
+    testAlertProperty: false,
     shouldShowIcon: true, 
-  defaultSlot: `Enter slot content here`,
-		headerSlot: `Enter slot content here`,
-		
+  defaultSlot: `Enter slot content here`,		headerSlot: `Enter slot content here`,		
   
 }
 
@@ -188,12 +194,7 @@ export const Template = (
   
   return html`
       <outline-alert
-      priority=${args.priority}
-			status-type=${args.statusType}
-			size=${args.size}
-			?isInteractive=${args.isInteractive}
-			?shouldShowIcon=${args.shouldShowIcon}
-			
+      priority=${args.priority}			status-type=${args.statusType}			size=${args.size}			?isInteractive=${args.isInteractive}			?testAlertProperty=${args.testAlertProperty}			?shouldShowIcon=${args.shouldShowIcon}			
       >
       ${unsafeHTML(args.story)}
     </outline-alert>

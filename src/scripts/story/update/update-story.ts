@@ -20,20 +20,19 @@ export const updateStory = (args: any, flags: any): void => {
   const currDir = process.cwd()
   const configPath = path.resolve(currDir, './.genesis.json')
   const config = JSON.parse(readFileSync(configPath, 'utf8'))
-  console.log(config);
   
   const componentName = flags.test ? `${args.name}-test` : args.name
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
-  const nameSpace = flags.nameSpace || config.defaultDirectory
+  const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
   const customElementPath = flags.customElementsPath || config.customElementsPath
   const resolvedPath = path.resolve(currDir, customElementPath)
 
-  const configOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
+  const configOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/generated/config.ts`  
 
   // import custom element json file
   import(`${resolvedPath}`)
   .then((customElements: any) => {
-    console.log('Updating story for', componentName)
+    console.log('Updating story for', componentName, resolvedPath)
 
     // get custom element json data for component
     const componentData = customElements.tags.find(
