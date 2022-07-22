@@ -31,7 +31,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`genesis component NAME`](#genesis-component-name)
+* [`genesis component create NAME`](#genesis-component-create-name)
 * [`genesis help [COMMAND]`](#genesis-help-command)
 * [`genesis init`](#genesis-init)
 * [`genesis plugins`](#genesis-plugins)
@@ -46,30 +46,30 @@ USAGE
 * [`genesis story create NAME`](#genesis-story-create-name)
 * [`genesis story update NAME`](#genesis-story-update-name)
 
-## `genesis component NAME`
+## `genesis component create NAME`
 
 describe the command here
 
 ```
 USAGE
-  $ genesis component [NAME] [-b <value>] [-f] [-n <value>]
+  $ genesis component create [NAME] [-o <value>] [-p <value>] [-b <value>] [-d <value>] [-t]
 
 ARGUMENTS
   NAME  name of component
 
 FLAGS
-  -b, --baseClass=<value>  [default: LitElement] name of base class to inherit from
-  -f, --force
-  -n, --nameSpace=<value>  name space for the component. defaults to the base name used for the component
+  -b, --baseClass=<value>  name of base class
+  -d, --directory=<value>  directory for the component. defaults to the base name used for the component
+  -o, --output=<value>     category for the story, defaults to the same path as the component
+  -p, --path=<value>       path to custom-elements.json
+  -t, --test               create a test file for the component
 
 DESCRIPTION
   describe the command here
 
 EXAMPLES
-  $ genesis component
+  $ genesis component create
 ```
-
-_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.3.0/dist/commands/component.ts)_
 
 ## `genesis help [COMMAND]`
 
