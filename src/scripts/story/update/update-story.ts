@@ -1,9 +1,9 @@
 // import * as fs from 'fs'
 import  {outputFileSync, readFileSync } from 'fs-extra'
 import path = require('path')
-import configTemplate from '../../../templates/story/config-template';
+import configTemplate from '../../../templates/story/config-template'
+import {replaceComponentName} from '../../../utility/utility'
 import {
-  replaceComponentName,
   replaceArgTypes,
   replaceAttributes,
   replaceArgs
@@ -24,10 +24,11 @@ export const updateStory = (args: any, flags: any): void => {
   const componentName = flags.test ? `${args.name}-test` : args.name
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
   const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
-  const customElementPath = flags.customElementsPath || config.customElementsPath
+  const customElementPath = flags.customElementsPath || config.customElementsPath || 'src/custom-elements.json'
   const resolvedPath = path.resolve(currDir, customElementPath)
 
   const configOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/generated/config.ts`  
+
 
   // import custom element json file
   import(`${resolvedPath}`)
@@ -38,6 +39,8 @@ export const updateStory = (args: any, flags: any): void => {
     const componentData = customElements.tags.find(
       (tag: { name: any }) => tag.name === componentName,
     )
+
+    // const result = analyzeSourceFile(`${resolvedPath}/${componentName}.ts`)
 
     // create config file from template
     outputFileSync(configOutput, configTemplate)

@@ -1,6 +1,6 @@
 {
   "name": "@mabry/genesis",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A CLI tool for generating Lit Element components, Storybook stories, and more!",
   "author": "Josh Mabry",
   "bin": {
@@ -67,8 +67,8 @@
     "story:create:test": "./bin/dev story:create outline-alert -o test/src/",
     "story:update": "./bin/dev story",
     "story:update:test": "./bin/dev story:update outline-alert -o test/src/",
-    "component:create": "./bin/dev component",
-    "component:create:test": "./bin/dev component outline-egg"
+    "component:create": "./bin/dev component:create",
+    "component:create:test": "./bin/dev component:create test-component"
   },
   "engines": {
     "node": ">=12.0.0"

@@ -1,3 +1,4 @@
+const replace = require('replace')
 /* eslint-disable valid-jsdoc */
 /**
  * Converts from kebab-case to capital letter with spaces
@@ -80,4 +81,49 @@ export const getContentBetween = (start: string, end: string, str: string): stri
     str.indexOf(start) + start.length,
     str.lastIndexOf(end),
   )
+}
+
+/**
+ * Replaces all instances of the component name in the story template
+ * @param componentName - component name
+ * @param storyPath - path to story file
+ * @returns void
+ **/
+export const replaceComponentName = (componentName: string, storyPath: string): void => {
+  const nameTitleCase = kebabCaseToTitleCase(componentName)
+  const nameTitleSpaceCase = kebabCaseToTitleSpaceCase(componentName)
+  const nameCamelCase = kebabCaseToLowerCamelCase(componentName)
+
+  // @todo: use a loop to replace all instances of the component name?
+  replace({
+    regex: 'ComponentName',
+    replacement: nameTitleCase,
+    paths: [storyPath],
+    recursive: false,
+    silent: true,
+  })
+
+  replace({
+    regex: 'componentName',
+    replacement: nameCamelCase,
+    paths: [storyPath],
+    recursive: false,
+    silent: true,
+  })
+
+  replace({
+    regex: 'Component Name',
+    replacement: nameTitleSpaceCase,
+    paths: [storyPath],
+    recursive: false,
+    silent: true,
+  })
+
+  replace({
+    regex: 'component-name',
+    replacement: componentName,
+    paths: [storyPath],
+    recursive: false,
+    silent: true,
+  })
 }

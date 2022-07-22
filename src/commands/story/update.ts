@@ -35,5 +35,7 @@ export default class StoryUpdate extends Command {
     .catch(error => {
       console.error(error)
     })
+
+    this.log('story updated')
   }
 }
