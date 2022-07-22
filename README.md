@@ -22,7 +22,7 @@ $ npm install -g @mabry/genesis
 $ genesis COMMAND
 running command...
 $ genesis (--version)
-@mabry/genesis/0.2.0 darwin-x64 node-v14.16.0
+@mabry/genesis/0.3.0 darwin-x64 node-v14.16.0
 $ genesis --help [COMMAND]
 USAGE
   $ genesis COMMAND
@@ -69,7 +69,7 @@ EXAMPLES
   $ genesis component
 ```
 
-_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.2.0/dist/commands/component.ts)_
+_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.3.0/dist/commands/component.ts)_
 
 ## `genesis help [COMMAND]`
 
@@ -106,7 +106,7 @@ EXAMPLES
   $ genesis init
 ```
 
-_See code: [dist/commands/init.ts](https://github.com/mabryCodes/genesis/blob/v0.2.0/dist/commands/init.ts)_
+_See code: [dist/commands/init.ts](https://github.com/mabryCodes/genesis/blob/v0.3.0/dist/commands/init.ts)_
 
 ## `genesis plugins`
 
