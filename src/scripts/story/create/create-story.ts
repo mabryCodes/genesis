@@ -74,7 +74,7 @@ export const createStory = (args: any, flags: any): void => {
   const customElementPath = flags.customElementsPath || config.customElementsPath || 'src/custom-elements.json'
   const fullBleed = flags.fullBleed
   const resolvedPath = path.resolve(currDir, customElementPath)
-  const base = flags.output ? flags.output : `${currDir}/src/${directory}/${componentName}`
+  const base = flags.output ? flags.output : `src/${directory}/${componentName}`
   const storyIndexOutput = `${base}/${directory}/${componentName}/story/generated/index.stories.ts`
   const configOutput =   `${base}/${directory}/${componentName}/story/generated/config.ts`
   const userConfigOutput = `${base}/${directory}/${componentName}/story/user-config.ts`
