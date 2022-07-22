@@ -29,7 +29,7 @@ export const createStory = (args: any, flags: any): void => {
   const configPath = path.resolve(currDir, './.genesis.json')
   const config = JSON.parse(readFileSync(configPath, 'utf8'))
   const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
-  const customElementPath = flags.customElementsPath || config.customElementsPath
+  const customElementPath = flags.customElementsPath || config.customElementsPath || 'src/custom-elements.json'
   const fullBleed = flags.fullBleed
   const resolvedPath = path.resolve(currDir, customElementPath)
 
