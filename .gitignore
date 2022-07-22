@@ -7,5 +7,5 @@
 /tmp
 node_modules
 oclif.manifest.json
-test/example-story
+test/src/*
 .DS_Store

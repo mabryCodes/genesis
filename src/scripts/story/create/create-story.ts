@@ -1,6 +1,5 @@
 // import * as fs from 'fs'
-// import { existsSync, outputFileSync, readFileSync } from 'fs-extra'
-import {outputFileSync} from 'fs-extra'
+import {outputFileSync, readFileSync} from 'fs-extra'
 import path = require('path')
 import storyIndexTemplate = require('../../../templates/story/index-template');
 import userConfigTemplate from '../../../templates/story/user-config-template';
@@ -17,15 +16,6 @@ import {
   replaceParameters,
 } from '../helpers'
 
-// import {Program} from 'typescript'
-// import { analyzeSourceFile } from "web-component-analyzer";
-
-const config = {
-  customElementPath: 'test/src/custom-element.json',
-  baseClass: 'OutlineElement',
-  defaultNamespace: 'base',
-}
-
 /**
  * Creates story from custom element json file
  * @param {string} component - name of component
@@ -34,18 +24,19 @@ const config = {
  * @param {string} category - category of component defaults to 'Content'
  */
 export const createStory = (args: any, flags: any): void => {
-  const componentName = flags.test ? `${args.name}-test` : args.name
-  // the namespace of the parent folder of the component src/{namespace}/{componentName}
-  const nameSpace = flags.nameSpace || config.defaultNamespace
-  const customElementPath = flags.customElementsPath || config.customElementPath
-  const fullBleed = flags.fullBleed
   const currDir = process.cwd()
+  const componentName = flags.test ? `${args.name}-test` : args.name
+  const configPath = path.resolve(currDir, './.genesis.json')
+  const config = JSON.parse(readFileSync(configPath, 'utf8'))
+  const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
+  const customElementPath = flags.customElementsPath || config.customElementsPath || 'src/custom-elements.json'
+  const fullBleed = flags.fullBleed
   const resolvedPath = path.resolve(currDir, customElementPath)
 
-  const storyIndexOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/index.stories.ts`
-  const configOutput =   `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
-  const userConfigOutput = `${flags.output}/${nameSpace}/${componentName}/story/user-config.ts`
-  const variantOutput = `${flags.output}/${nameSpace}/${componentName}/story/${componentName}.stories.ts`
+  const storyIndexOutput = `${flags.output}/${directory}/${componentName}/story/generated/index.stories.ts`
+  const configOutput =   `${flags.output}/${directory}/${componentName}/story/generated/config.ts`  
+  const userConfigOutput = `${flags.output}/${directory}/${componentName}/story/user-config.ts`
+  const variantOutput = `${flags.output}/${directory}/${componentName}/story/${componentName}.stories.ts`
 
   // import custom element json file
   import(`${resolvedPath}`)

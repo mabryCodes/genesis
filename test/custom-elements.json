@@ -28,6 +28,12 @@
           "default": "false"
         },
         {
+          "name": "testAlertProperty",
+          "description": "This is important context for screen readers.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "shouldShowIcon",
           "type": "boolean",
           "default": "true"

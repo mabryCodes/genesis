@@ -1,24 +1,13 @@
 // import * as fs from 'fs'
-// import { existsSync, outputFileSync, readFileSync } from 'fs-extra'
-import {outputFileSync} from 'fs-extra'
+import  {outputFileSync, readFileSync } from 'fs-extra'
 import path = require('path')
 import configTemplate from '../../../templates/story/config-template';
-
 import {
   replaceComponentName,
   replaceArgTypes,
   replaceAttributes,
   replaceArgs
 } from '../helpers'
-
-// import {Program} from 'typescript'
-// import { analyzeSourceFile } from "web-component-analyzer";
-
-const config = {
-  customElementPath: 'test/src/custom-element.json',
-  baseClass: 'OutlineElement',
-  defaultNamespace: 'base',
-}
 
 /**
  * Creates story from custom element json file
@@ -28,19 +17,22 @@ const config = {
  * @param {string} category - category of component defaults to 'Content'
  */
 export const updateStory = (args: any, flags: any): void => {
+  const currDir = process.cwd()
+  const configPath = path.resolve(currDir, './.genesis.json')
+  const config = JSON.parse(readFileSync(configPath, 'utf8'))
+  
   const componentName = flags.test ? `${args.name}-test` : args.name
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
-  const nameSpace = flags.nameSpace || config.defaultNamespace
-  const customElementPath = flags.customElementsPath || config.customElementPath
-  const currDir = process.cwd()
+  const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
+  const customElementPath = flags.customElementsPath || config.customElementsPath
   const resolvedPath = path.resolve(currDir, customElementPath)
 
-  const configOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
+  const configOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/generated/config.ts`  
 
   // import custom element json file
   import(`${resolvedPath}`)
   .then((customElements: any) => {
-    console.log('Updating story for', componentName)
+    console.log('Updating story for', componentName, resolvedPath)
 
     // get custom element json data for component
     const componentData = customElements.tags.find(

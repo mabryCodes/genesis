@@ -22,7 +22,7 @@ $ npm install -g @mabry/genesis
 $ genesis COMMAND
 running command...
 $ genesis (--version)
-@mabry/genesis/0.1.4 darwin-x64 node-v14.16.0
+@mabry/genesis/0.2.0 darwin-x64 node-v14.16.0
 $ genesis --help [COMMAND]
 USAGE
   $ genesis COMMAND
@@ -33,6 +33,7 @@ USAGE
 <!-- commands -->
 * [`genesis component NAME`](#genesis-component-name)
 * [`genesis help [COMMAND]`](#genesis-help-command)
+* [`genesis init`](#genesis-init)
 * [`genesis plugins`](#genesis-plugins)
 * [`genesis plugins:install PLUGIN...`](#genesis-pluginsinstall-plugin)
 * [`genesis plugins:inspect PLUGIN...`](#genesis-pluginsinspect-plugin)
@@ -68,7 +69,7 @@ EXAMPLES
   $ genesis component
 ```
 
-_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.1.4/dist/commands/component.ts)_
+_See code: [dist/commands/component.ts](https://github.com/mabryCodes/genesis/blob/v0.2.0/dist/commands/component.ts)_
 
 ## `genesis help [COMMAND]`
 
@@ -89,6 +90,23 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
+
+## `genesis init`
+
+Initializes a config file at the root of the current directory
+
+```
+USAGE
+  $ genesis init
+
+DESCRIPTION
+  Initializes a config file at the root of the current directory
+
+EXAMPLES
+  $ genesis init
+```
+
+_See code: [dist/commands/init.ts](https://github.com/mabryCodes/genesis/blob/v0.2.0/dist/commands/init.ts)_
 
 ## `genesis plugins`
 
@@ -326,15 +344,16 @@ Generates a Storybook story using the custom-elements.json file.
 
 ```
 USAGE
-  $ genesis story create [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-n <value>] [-t]
+  $ genesis story create [NAME] [-f] [-o <value>] [-p <value>] [-c <value>] [-d <value>] [-t]
 
 ARGUMENTS
   NAME  name of component
 
 FLAGS
   -c, --category=<value>            [default: Content] category for the story
+  -d, --defaultDirectory=<value>    The default directory of the components. defaults to the base name used for the
+                                    component
   -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
-  -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
   -o, --output=<value>              category for the story, defaults to the same path as the component
   -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
   -t, --test                        create a test file for the component story
@@ -352,15 +371,16 @@ describe the command here
 
 ```
 USAGE
-  $ genesis story update [NAME] [-f] [-o <value>] [-p <value>] [-s <value>] [-c <value>] [-n <value>] [-t]
+  $ genesis story update [NAME] [-f] [-o <value>] [-p <value>] [-s <value>] [-c <value>] [-d <value>] [-t]
 
 ARGUMENTS
   NAME  name of component
 
 FLAGS
   -c, --category=<value>            [default: Content] category for the story
+  -d, --defaultDirectory=<value>    Default directory for the component. defaults to the base name used for the
+                                    component
   -f, --fullBleed                   allow the component to expand to the full width and height of the Storybook Canvas
-  -n, --nameSpace=<value>           name space for the component. defaults to the base name used for the component
   -o, --output=<value>              category for the story, defaults to the same path as the component
   -p, --customElementsPath=<value>  path to custom-elements.json. overrides config setting
   -s, --storyPath=<value>           path to components story file.
