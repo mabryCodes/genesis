@@ -83,7 +83,7 @@ export const createStory = (args: any, flags: any): void => {
   // import custom element json file
   import(`${resolvedPath}`)
   .then((customElements: any) => {
-    console.log('Creating story for', componentName, 'at', flags.output)
+    console.log('Creating story for', componentName, 'at', currDir + `/${flags.output || 'src/components'}/${directory}/${componentName}/story`)
 
     // get custom element json data for component
     const componentData = customElements.tags.find(
