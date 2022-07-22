@@ -1,19 +1,11 @@
-// import * as fs from 'fs'
-// import { existsSync, outputFileSync, readFileSync } from 'fs-extra'
-import { outputFileSync } from 'fs-extra';
+import { outputFileSync, readFileSync } from 'fs-extra';
 import path = require('path');
 import simpleTemplate = require('../../../templates/component/simple-template');
 import { kebabCase } from 'lodash';
 
 import { replaceComponentName } from '../../../utility/utility';
 import { analyzeComponent, replaceBaseClassName, replaceBaseClassPath } from '../helpers';
-import { createStory, createStoryFromJson } from '../../story/create/create-story';
-
-const config = {
-  customElementPath: 'test/src/custom-element.json',
-  baseClass: 'OutlineElement',
-  directory: 'base',
-};
+import { createStoryFromJson } from '../../story/create/create-story';
 
 /**
  * Creates component using templates
@@ -21,21 +13,24 @@ const config = {
  * @param {string} flags - cli flags same path as the component
  */
 export const createComponent = (args: any, flags: any): void => {
-  const componentName = flags.test ? `${args.name}-test` : args.name;
-  const directory = flags.directory || config.directory;
-  const customElementPath =
-    flags.customElementsPath || config.customElementPath;
-  const baseClass = flags.baseClass || config.baseClass;
   const currDir = process.cwd();
+  const componentName = flags.test ? `${args.name}-test` : args.name;
+  const configPath = path.resolve(currDir, './.genesis.json')
+  const config = JSON.parse(readFileSync(configPath, 'utf8'))
+  const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
+  const customElementPath =
+    flags.customElementsPath || config.customElementPath || 'src/custom-elements.json';
+  const baseClass = flags.baseClass || config.baseClass || 'LitElement';
   const resolvedPath = path.resolve(currDir, customElementPath);
-  const componentOutputPath = `${flags.output}${directory}/${componentName}/${componentName}.ts`;
-  const cssOutput = `${flags.output}${directory}/${componentName}/${componentName}.css`;
+  const componentOutputPath = `${flags.output || 'src/components'}/${directory}/${componentName}/${componentName}.ts`;
+  const cssOutput = `${flags.output}/${directory}/${componentName}/${componentName}.css`;
 
   if (baseClass === 'LitElement') {
     outputFileSync(cssOutput, '');
-    outputFileSync(componentOutputPath, simpleTemplate);
+    outputFileSync(componentOutputPath, simpleTemplate.default);
     replaceComponentName(componentName, componentOutputPath);
     replaceBaseClassName(baseClass, componentOutputPath);
+    replaceBaseClassPath('lit', componentOutputPath);
     
     // set behind a story flag
     const results = analyzeComponent(componentOutputPath);

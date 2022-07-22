@@ -1,29 +1,14 @@
 // import * as fs from 'fs'
 import  {outputFileSync, readFileSync } from 'fs-extra'
 import path = require('path')
-import configTemplate from '../../../templates/story/config-template';
-<<<<<<< HEAD
-import {replaceComponentName} from '../../../utility/utility';
-=======
->>>>>>> e51df85195caa43ba0ab8895913da37973316255
+import configTemplate from '../../../templates/story/config-template'
+import {replaceComponentName} from '../../../utility/utility'
 import {
   replaceArgTypes,
   replaceAttributes,
   replaceArgs
 } from '../helpers'
 
-<<<<<<< HEAD
-import {Program} from 'typescript'
-import { analyzeSourceFile } from "web-component-analyzer";
-
-const config = {
-  customElementPath: 'test/src/custom-element.json',
-  baseClass: 'OutlineElement',
-  defaultNamespace: 'base',
-}
-
-=======
->>>>>>> e51df85195caa43ba0ab8895913da37973316255
 /**
  * Creates story from custom element json file
  * @param {string} component - name of component
@@ -39,7 +24,7 @@ export const updateStory = (args: any, flags: any): void => {
   const componentName = flags.test ? `${args.name}-test` : args.name
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
   const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
-  const customElementPath = flags.customElementsPath || config.customElementsPath
+  const customElementPath = flags.customElementsPath || config.customElementsPath || 'src/custom-elements.json'
   const resolvedPath = path.resolve(currDir, customElementPath)
 
   const configOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/generated/config.ts`  

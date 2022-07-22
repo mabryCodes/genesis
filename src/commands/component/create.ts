@@ -20,6 +20,8 @@ export default class ComponentCreate extends Command {
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(ComponentCreate)
+    this.log(`creating component ${args.name}`)
     createComponent(args, flags)
+    this.log('component created')
   }
 }

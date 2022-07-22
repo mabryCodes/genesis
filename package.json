@@ -68,7 +68,7 @@
     "story:update": "./bin/dev story",
     "story:update:test": "./bin/dev story:update outline-alert -o test/src/",
     "component:create": "./bin/dev component:create",
-    "component:create:test": "./bin/dev component:create test-component -b OutlineElement -o test/src/"
+    "component:create:test": "./bin/dev component:create test-component"
   },
   "engines": {
     "node": ">=12.0.0"
