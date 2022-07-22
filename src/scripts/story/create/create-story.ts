@@ -70,15 +70,16 @@ export const createStory = (args: any, flags: any): void => {
 
   const configPath = path.resolve(currDir, './.genesis.json')
   const config = JSON.parse(readFileSync(configPath, 'utf8'))
+  console.log('config', config)
   const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
   const customElementPath = flags.customElementsPath || config.customElementsPath || 'src/custom-elements.json'
   const fullBleed = flags.fullBleed
   const resolvedPath = path.resolve(currDir, customElementPath)
   const base = flags.output ? flags.output : `src/${directory}/${componentName}`
-  const storyIndexOutput = `${base}/${directory}/${componentName}/story/generated/index.stories.ts`
-  const configOutput =   `${base}/${directory}/${componentName}/story/generated/config.ts`
-  const userConfigOutput = `${base}/${directory}/${componentName}/story/user-config.ts`
-  const variantOutput = `${base}/${directory}/${componentName}/story/${componentName}.stories.ts`
+  const storyIndexOutput = `${base}/story/generated/index.stories.ts`
+  const configOutput =   `${base}/story/generated/config.ts`
+  const userConfigOutput = `${base}/story/user-config.ts`
+  const variantOutput = `${base}/story/${componentName}.stories.ts`
 
   // import custom element json file
   import(`${resolvedPath}`)
