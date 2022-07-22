@@ -11,13 +11,14 @@ import {createStoryFromJson} from '../../story/create/create-story'
  * Creates component using templates
  * @param {string} args - cli arguments
  * @param {string} flags - cli flags same path as the component
+ * @returns void
  */
 export const createComponent = (args: any, flags: any): void => {
   const currDir = process.cwd()
   const componentName = flags.test ? `${args.name}-test` : args.name
   const configPath = path.resolve(currDir, './.genesis.json')
   const config = JSON.parse(readFileSync(configPath, 'utf8'))
-  const directory = flags.defaultDirectory || config.defaultDirectory || componentName.split('-')[0]
+  const directory = flags.defaultDirectory || componentName.split('-')[0]
   const customElementPath =
     flags.customElementsPath || config.customElementPath || 'src/custom-elements.json'
   const baseClass = flags.baseClass || config.baseClass || 'LitElement'
@@ -39,11 +40,9 @@ export const createComponent = (args: any, flags: any): void => {
     importAndReplace(
       resolvedPath,
       baseClass,
-      flags,
       cssOutput,
       componentOutputPath,
       componentName,
-      directory,
     )
   }
 }
@@ -51,11 +50,9 @@ export const createComponent = (args: any, flags: any): void => {
 const importAndReplace = (
   resolvedPath: string,
   baseClass: string,
-  flags: any,
   cssOutput: string,
   componentOutputPath: string,
   componentName: string,
-  directory: string,
 ): void => {
   // import custom element json file
   import(`${resolvedPath}`)
