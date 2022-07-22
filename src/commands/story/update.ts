@@ -18,7 +18,7 @@ export default class StoryUpdate extends Command {
     storyPath: Flags.string({char: 's', description: 'path to components story file. \n overrides config setting \n defaults to same folder as component'}),
     category: Flags.string({char: 'c', description: 'category for the story', default: 'Content'},
     ),
-    nameSpace: Flags.string({char: 'n', description: 'name space for the component. defaults to the base name used for the component'}),
+    defaultDirectory: Flags.string({char: 'd', description: 'Default directory for the component. defaults to the base name used for the component'}),
     test: Flags.boolean({char: 't', description: 'create a test file for the component story'}),
   }
 

@@ -1,4 +1,4 @@
-{
+export default `{
   "customElementsPath": "src/custom-elements.json",
   "defaultDirectory": "genesis",
   "story": {
@@ -15,3 +15,4 @@
     }
   }
 }
+`

@@ -16,12 +16,13 @@ export default class StoryCreate extends Command {
     customElementsPath: Flags.string({char: 'p', description: 'path to custom-elements.json. overrides config setting'}),
     category: Flags.string({char: 'c', description: 'category for the story', default: 'Content'},
     ),
-    nameSpace: Flags.string({char: 'n', description: 'name space for the component. defaults to the base name used for the component'}),
+    defaultDirectory: Flags.string({char: 'd', description: 'The default directory of the components. defaults to the base name used for the component'}),
     test: Flags.boolean({char: 't', description: 'create a test file for the component story'}),
   }
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(StoryCreate)
     createStory(args, flags)
+    this.log('story created')
   }
 }

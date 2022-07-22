@@ -1,24 +1,13 @@
 // import * as fs from 'fs'
-// import { existsSync, outputFileSync, readFileSync } from 'fs-extra'
-import {outputFileSync} from 'fs-extra'
+import  {outputFileSync, readFileSync } from 'fs-extra'
 import path = require('path')
 import configTemplate from '../../../templates/story/config-template';
-
 import {
   replaceComponentName,
   replaceArgTypes,
   replaceAttributes,
   replaceArgs
 } from '../helpers'
-
-// import {Program} from 'typescript'
-// import { analyzeSourceFile } from "web-component-analyzer";
-
-const config = {
-  customElementPath: 'test/src/custom-element.json',
-  baseClass: 'OutlineElement',
-  defaultNamespace: 'base',
-}
 
 /**
  * Creates story from custom element json file
@@ -28,11 +17,15 @@ const config = {
  * @param {string} category - category of component defaults to 'Content'
  */
 export const updateStory = (args: any, flags: any): void => {
+  const currDir = process.cwd()
+  const configPath = path.resolve(currDir, './.genesis.json')
+  const config = JSON.parse(readFileSync(configPath, 'utf8'))
+  console.log(config);
+  
   const componentName = flags.test ? `${args.name}-test` : args.name
   // the namespace of the parent folder of the component src/{namespace}/{componentName}
-  const nameSpace = flags.nameSpace || config.defaultNamespace
-  const customElementPath = flags.customElementsPath || config.customElementPath
-  const currDir = process.cwd()
+  const nameSpace = flags.nameSpace || config.defaultDirectory
+  const customElementPath = flags.customElementsPath || config.customElementsPath
   const resolvedPath = path.resolve(currDir, customElementPath)
 
   const configOutput = `${flags.output}/${nameSpace}/${componentName}/story/generated/config.ts`  
