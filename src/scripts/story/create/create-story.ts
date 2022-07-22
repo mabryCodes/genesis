@@ -75,10 +75,10 @@ export const createStory = (args: any, flags: any): void => {
   const fullBleed = flags.fullBleed
   const resolvedPath = path.resolve(currDir, customElementPath)
 
-  const storyIndexOutput = `${flags.output}/${directory}/${componentName}/story/generated/index.stories.ts`
-  const configOutput =   `${flags.output}/${directory}/${componentName}/story/generated/config.ts`
-  const userConfigOutput = `${flags.output}/${directory}/${componentName}/story/user-config.ts`
-  const variantOutput = `${flags.output}/${directory}/${componentName}/story/${componentName}.stories.ts`
+  const storyIndexOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/generated/index.stories.ts`
+  const configOutput =   `${flags.output || 'src/components'}/${directory}/${componentName}/story/generated/config.ts`
+  const userConfigOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/user-config.ts`
+  const variantOutput = `${flags.output || 'src/components'}/${directory}/${componentName}/story/${componentName}.stories.ts`
 
   // import custom element json file
   import(`${resolvedPath}`)
